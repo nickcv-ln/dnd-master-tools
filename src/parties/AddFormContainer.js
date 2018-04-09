@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 
-import { addParty } from 'state/parties/actions';
+import { createParty } from 'state/parties/actions';
 import Form from 'parties/Form';
 
 const mapDispatchToProps = dispatch => ({
-  onSubmit: data => dispatch(addParty(data)),
+  onSubmit: data => dispatch(createParty(data)),
 });
 
 export default connect(
