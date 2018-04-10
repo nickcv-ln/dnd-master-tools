@@ -17,6 +17,11 @@ export const doPartiesExist = createSelector(
   parties => !!parties.list.length,
 );
 
+export const getPartyList = createSelector(
+  getParties,
+  parties => parties.parties,
+);
+
 export const getParty = party => createSelector(
   getParties,
   parties => parties.parties[party],

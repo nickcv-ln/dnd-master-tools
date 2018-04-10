@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Collapse,
   Navbar,
@@ -10,9 +11,11 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem } from 'reactstrap';
+  DropdownItem,
+} from 'reactstrap';
+import { Link } from 'react-router-dom';
 
-export default class Example extends React.Component {
+class PageNavBar extends React.Component {
   constructor(props) {
     super(props);
 
@@ -21,12 +24,20 @@ export default class Example extends React.Component {
       isOpen: false,
     };
   }
+
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen,
     });
   }
+
   render() {
+    const selectedParty = this.props.selectedParty ? <kbd>{ this.props.selectedParty.name }</kbd> : 'select a party';
+    const parties = Object.keys(this.props.parties).map(key => (
+      <DropdownItem key={key} onClick={() => this.props.selectParty(key)}>
+        { this.props.parties[key].name }
+      </DropdownItem>
+    ));
     return (
       <div>
         <Navbar color="light" light expand="md">
@@ -35,22 +46,17 @@ export default class Example extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/components/">Components</NavLink>
+                <NavLink tag={Link} to="/">Encounters</NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
-                  Options
+                  { selectedParty }
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>
-                    Option 1
-                  </DropdownItem>
-                  <DropdownItem>
-                    Option 2
-                  </DropdownItem>
+                  { parties }
                   <DropdownItem divider />
                   <DropdownItem>
-                    Reset
+                    <NavLink tag={Link} to="/parties/add">Add Party</NavLink>
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
@@ -61,3 +67,19 @@ export default class Example extends React.Component {
     );
   }
 }
+
+PageNavBar.propTypes = {
+  selectedParty: PropTypes.shape({
+    name: PropTypes.string,
+  }),
+  parties: PropTypes.shape({
+    name: PropTypes.string,
+  }).isRequired,
+  selectParty: PropTypes.func.isRequired,
+};
+
+PageNavBar.defaultProps = {
+  selectedParty: null,
+};
+
+export default PageNavBar;

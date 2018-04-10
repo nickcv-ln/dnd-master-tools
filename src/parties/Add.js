@@ -4,7 +4,7 @@ import Page from 'common/Page';
 import Form from 'parties/AddFormContainer';
 
 const Add = () => (
-  <Page title="Party List">
+  <Page title="Create a Party">
     <Form />
   </Page>
 );

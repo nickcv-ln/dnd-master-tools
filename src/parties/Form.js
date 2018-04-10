@@ -7,12 +7,12 @@ import Input from 'common/Input';
 
 
 const PartyForm = ({ handleSubmit }) => (
-  <Form onSubmit={handleSubmit}>
-    <FormGroup>
-      <Label for="party-name">Party Name</Label>
-      <Field name="name" component={Input} id="party-name" type="text" />
+  <Form inline onSubmit={handleSubmit}>
+    <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+      <Label className="mb-2 mr-sm-2 mb-sm-0" for="party-name">Party Name</Label>
+      <Field autoFocus name="name" component={Input} id="party-name" type="text" />
     </FormGroup>
-    <Button>Submit</Button>
+    <Button color="primary">Submit</Button>
   </Form>
 );
 

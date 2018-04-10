@@ -1,9 +1,12 @@
+import { combineReducers } from 'redux';
 import omit from 'object.omit';
 import {
   ADD_PARTY,
   SELECT_PARTY,
   ADD_MEMBER,
   REMOVE_MEMBER,
+  INCREASE_LEVEL,
+  DECREASE_LEVEL,
 } from 'state/parties/types';
 
 const defaultState = {
@@ -23,6 +26,20 @@ const addMember = (state, payload) => ({
   },
 });
 
+const changeLevel = (state, payload, increase = true) => {
+  const currentLevel = state.members[payload.member].level;
+  return {
+    ...state,
+    members: {
+      ...state.members,
+      [payload.member]: {
+        name: state.members[payload.member].name,
+        level: increase ? currentLevel + 1 : currentLevel - 1,
+      },
+    },
+  };
+};
+
 const removeMember = (state, payload) => ({
   ...state,
   members: {
@@ -30,44 +47,63 @@ const removeMember = (state, payload) => ({
   },
 });
 
-const reducer = (state = defaultState, action) => {
+const list = (state = defaultState.list, action) => {
+  switch (action.type) {
+    case ADD_PARTY:
+      return [...state, action.payload.name];
+    default:
+      return state;
+  }
+};
+
+const currentParty = (state = defaultState.currentParty, action) => {
+  switch (action.type) {
+    case SELECT_PARTY:
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+const parties = (state = defaultState.parties, action) => {
   switch (action.type) {
     case ADD_PARTY:
       return {
         ...state,
-        list: [...state.list, action.payload.name],
-        parties: {
-          ...state.parties,
-          [action.payload.name]: {
-            ...action.payload,
-            members: {},
-          },
+        [action.payload.name]: {
+          ...action.payload,
+          members: {},
         },
-      };
-    case SELECT_PARTY:
-      return {
-        ...state,
-        currentParty: action.payload,
       };
     case ADD_MEMBER:
       return {
         ...state,
-        parties: {
-          ...state.parties,
-          [action.payload.party]: addMember(state.parties[action.payload.party], action.payload),
-        },
+        [action.payload.party]: addMember(state[action.payload.party], action.payload),
       };
     case REMOVE_MEMBER:
       return {
         ...state,
-        parties: {
-          ...state.parties,
-          [action.payload.party]: removeMember(state.parties[action.payload.party], action.payload),
-        },
+        [action.payload.party]: removeMember(state[action.payload.party], action.payload),
+      };
+    case INCREASE_LEVEL:
+      return {
+        ...state,
+        [action.payload.party]: changeLevel(state[action.payload.party], action.payload),
+      };
+    case DECREASE_LEVEL:
+      return {
+        ...state,
+        [action.payload.party]: changeLevel(state[action.payload.party], action.payload, false),
       };
     default:
       return state;
   }
 };
+
+const reducer = combineReducers({
+  list,
+  currentParty,
+  parties,
+});
 
 export default reducer;

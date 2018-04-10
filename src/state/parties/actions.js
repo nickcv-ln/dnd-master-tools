@@ -3,6 +3,8 @@ import {
   SELECT_PARTY,
   ADD_MEMBER,
   REMOVE_MEMBER,
+  INCREASE_LEVEL,
+  DECREASE_LEVEL,
 } from 'state/parties/types';
 import { push } from 'react-router-redux';
 
@@ -23,6 +25,16 @@ export const addMember = member => ({
 
 export const removeMember = member => ({
   type: REMOVE_MEMBER,
+  payload: member,
+});
+
+export const increaseLevel = member => ({
+  type: INCREASE_LEVEL,
+  payload: member,
+});
+
+export const decreaseLevel = member => ({
+  type: DECREASE_LEVEL,
   payload: member,
 });
 
