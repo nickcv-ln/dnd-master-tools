@@ -6,11 +6,13 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 
 import Page from 'common/Page';
 import AddParty from 'parties/AddFormContainer';
+import Monsters from 'encounters/Monsters';
 
 const List = ({
   isPartySelected,
   doPartiesExist,
   selectedParty,
+  thresholds,
 }) => {
   const noParty = (
     <div>
@@ -50,12 +52,16 @@ const List = ({
   }
 
   return (
-    <Page title="Encounters">
+    <Page>
       <Row>
-        <Col>
-          <Jumbotron>
+        <Col lg={{ size: 4, order: 2 }}>
+          <Monsters thresholds={thresholds} />
+        </Col>
+        <Col lg="8">
+          <Jumbotron className="p-3 mb-3">
             { party }
           </Jumbotron>
+          the encounter
         </Col>
       </Row>
     </Page>
@@ -68,6 +74,12 @@ List.propTypes = {
   selectedParty: PropTypes.shape({
     name: PropTypes.string,
   }),
+  thresholds: PropTypes.shape({
+    easy: PropTypes.number,
+    medium: PropTypes.number,
+    hard: PropTypes.number,
+    deadly: PropTypes.number,
+  }).isRequired,
 };
 
 List.defaultProps = {

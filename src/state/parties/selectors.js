@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { getPartyThresholds as getThresholds } from 'utils/thresholds';
 
 export const getParties = state => state.parties;
 
@@ -25,4 +26,9 @@ export const getPartyList = createSelector(
 export const getParty = party => createSelector(
   getParties,
   parties => parties.parties[party],
+);
+
+export const getPartyThresholds = createSelector(
+  getSelectedParty,
+  selectedParty => getThresholds(selectedParty),
 );

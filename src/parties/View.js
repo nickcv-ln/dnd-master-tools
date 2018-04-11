@@ -25,8 +25,8 @@ const View = ({
   ));
 
   return (
-    <Page title={party.name}>
-      <h2>Party Members</h2>
+    <Page>
+      <h1>{party.name} Members</h1>
       <Table>
         <thead>
           <tr>

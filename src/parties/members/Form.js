@@ -10,7 +10,14 @@ const PartyForm = ({ handleSubmit }) => (
   <Form onSubmit={handleSubmit} inline>
     <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
       <Label for="member-name" className="mr-sm-2">Name</Label>
-      <Field name="name" autoComplete="off" component={Input} id="member-name" type="text" />
+      <Field
+        autoFocus
+        name="name"
+        autoComplete="off"
+        component={Input}
+        id="member-name"
+        type="text"
+      />
     </FormGroup>
     <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
       <Label for="member-level" className="mr-sm-2">Level</Label>

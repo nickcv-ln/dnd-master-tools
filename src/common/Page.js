@@ -4,14 +4,13 @@ import { Container, Row, Col } from 'reactstrap';
 
 import Navbar from 'common/NavbarContainer';
 
-const Page = ({ title, children }) => (
+const Page = ({ children }) => (
   <Container fluid>
     <Row>
       <Col><Navbar /></Col>
     </Row>
-    <Row>
+    <Row className="mt-2">
       <Col>
-        <h1>{title}</h1>
         { children }
       </Col>
     </Row>
@@ -19,7 +18,6 @@ const Page = ({ title, children }) => (
 );
 
 Page.propTypes = {
-  title: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([
     PropTypes.element,
     PropTypes.arrayOf(PropTypes.element),
