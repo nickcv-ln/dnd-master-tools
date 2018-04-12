@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
   ListGroup,
-  ListGroupItem,
   Input,
   InputGroup,
   InputGroupAddon,
 } from 'reactstrap';
 
+// eslint-disable-next-line
+import MonsterCard from 'encounters/MonsterCard';
 import { getChallengeForThreshold } from 'utils/thresholds';
 import monsterList from 'data/monsters';
 
@@ -97,9 +98,7 @@ class Monsters extends Component {
     }
 
     return (
-      <ListGroupItem title="whatever" color={color} key={monster.name}>
-        {monster.name} [{monster.challenge} - exp {monster.experience}]
-      </ListGroupItem>
+      <MonsterCard {...monster} color={color} key={monster.name} />
     );
   }
 
@@ -142,16 +141,16 @@ class Monsters extends Component {
 
     return (
       <div>
-        <h3>Monsters</h3>
+        <h3 className="text-center">Monsters</h3>
         <Input placeholder="filter by name" onChange={this.updateFilter} />
         <div className="form-inline d-flex mt-2">
-          <InputGroup>
+          <InputGroup className="col-md-6 col-xs-12 mt-md-0 mt-2">
             <InputGroupAddon addonType="prepend">min challenge</InputGroupAddon>
             <Input type="select" value={this.state.minChallenge} onChange={this.updateMinChallenge}>
               { challenges }
             </Input>
           </InputGroup>
-          <InputGroup className="ml-2 float-right">
+          <InputGroup className="col-md-6 col-xs-12 mt-md-0 mt-2">
             <InputGroupAddon addonType="prepend">max challenge</InputGroupAddon>
             <Input type="select" value={this.state.maxChallenge} onChange={this.updateMaxChallenge}>
               { challenges }
@@ -165,7 +164,7 @@ class Monsters extends Component {
         <span className="legend danger">&gt;= hard</span>
         <span className="legend dark">&gt;= deadly</span>
         <hr />
-        <ListGroup>
+        <ListGroup className="monsterList">
           { items }
         </ListGroup>
       </div>

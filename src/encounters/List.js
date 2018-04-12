@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Row, Col, Jumbotron } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import HTML5Backend from 'react-dnd-html5-backend';
+import { DragDropContext } from 'react-dnd';
 
 import Page from 'common/Page';
 import AddParty from 'parties/AddFormContainer';
@@ -61,7 +63,7 @@ const List = ({
           <Jumbotron className="p-3 mb-3">
             { party }
           </Jumbotron>
-          the encounter
+          <div className="droppable">droppable</div>
         </Col>
       </Row>
     </Page>
@@ -86,4 +88,4 @@ List.defaultProps = {
   selectedParty: null,
 };
 
-export default List;
+export default DragDropContext(HTML5Backend)(List);

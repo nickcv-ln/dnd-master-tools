@@ -13,7 +13,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { NavLink as RoutedNavLink, Link } from 'react-router-dom';
 
 class PageNavBar extends React.Component {
   constructor(props) {
@@ -46,7 +46,7 @@ class PageNavBar extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink tag={Link} to="/">Encounters</NavLink>
+                <NavLink tag={RoutedNavLink} to="/">Encounters</NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
