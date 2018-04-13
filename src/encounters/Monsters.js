@@ -8,7 +8,7 @@ import {
 } from 'reactstrap';
 
 // eslint-disable-next-line
-import MonsterCard from 'encounters/MonsterCard';
+import MonsterListItem from 'encounters/MonsterListItem';
 import { getChallengeForThreshold } from 'utils/thresholds';
 import monsterList from 'data/monsters';
 
@@ -98,7 +98,7 @@ class Monsters extends Component {
     }
 
     return (
-      <MonsterCard {...monster} color={color} key={monster.name} />
+      <MonsterListItem {...monster} color={color} key={monster.name} />
     );
   }
 
@@ -160,7 +160,7 @@ class Monsters extends Component {
         <hr />
         <span className="legend success">&lt;= easy</span>
         <span className="legend">&lt; medium</span>
-        <span className="legend warning">&gt; medium</span>
+        <span className="legend warning">&gt;= medium</span>
         <span className="legend danger">&gt;= hard</span>
         <span className="legend dark">&gt;= deadly</span>
         <hr />

@@ -3,9 +3,15 @@ import { getPartyThresholds as getThresholds } from 'utils/thresholds';
 
 export const getParties = state => state.parties;
 
+export const getSelectedPartyName = createSelector(
+  getParties,
+  parties => parties.currentParty,
+);
+
 export const getSelectedParty = createSelector(
   getParties,
-  parties => parties.parties[parties.currentParty],
+  getSelectedPartyName,
+  (parties, currentParty) => parties.parties[currentParty],
 );
 
 export const isPartySelected = createSelector(

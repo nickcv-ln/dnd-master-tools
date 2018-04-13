@@ -11,7 +11,7 @@ export const history = createHistory();
 const composeParams = [
   applyMiddleware(thunk),
   applyMiddleware(routerMiddleware(history)),
-  persistState(['parties']),
+  persistState(['parties', 'encounters']),
 ];
 
 /* eslint-disable */

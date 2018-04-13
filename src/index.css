@@ -51,3 +51,9 @@ span.legend.dark {
   height: calc(100vh - 304px);
   overflow-y: auto;
 }
+
+.monster-card button {
+  background-color: transparent;
+  border-color: transparent;
+  color: #6c757d;
+}

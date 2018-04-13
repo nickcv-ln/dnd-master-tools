@@ -9,6 +9,7 @@ import { DragDropContext } from 'react-dnd';
 import Page from 'common/Page';
 import AddParty from 'parties/AddFormContainer';
 import Monsters from 'encounters/Monsters';
+import EncounterDetails from 'encounters/EncounterDetailsContainer';
 
 const List = ({
   isPartySelected,
@@ -63,7 +64,7 @@ const List = ({
           <Jumbotron className="p-3 mb-3">
             { party }
           </Jumbotron>
-          <div className="droppable">droppable</div>
+          <EncounterDetails />
         </Col>
       </Row>
     </Page>

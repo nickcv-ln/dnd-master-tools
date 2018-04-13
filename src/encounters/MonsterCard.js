@@ -1,34 +1,52 @@
 import React from 'react';
-import { DragSource } from 'react-dnd';
-import { ListGroupItem } from 'reactstrap';
+import PropTypes from 'prop-types';
+import {
+  ButtonGroup,
+  Button,
+  ListGroupItem,
+} from 'reactstrap';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 
-export const MonsterCard = ({
-  connectDragSource,
-  color,
-  name,
-  experience,
-  challenge,
-}) => (
-  /* eslint-disable */
-  connectDragSource(
-    <div>
-      <ListGroupItem color={color}>
-        {name} [{challenge} - exp {experience}]
-      </ListGroupItem>
-    </div>
-  )
-  /* eslint-enable */
+const MonsterCard = ({ monster, party, removeMonster }) => (
+  <ListGroupItem className="monster-card p-2 clearfix align-text-bottom" color={monster.color}>
+    <span className="mt-2 d-inline-block">
+      {monster.name} [{monster.challenge}]
+    </span>
+    <ButtonGroup className="float-right" color="light">
+      <Button>
+        <FontAwesomeIcon
+          size="xs"
+          icon="minus"
+        />
+      </Button>
+      <Button className="font-weight-bold">{monster.number}</Button>
+      <Button>
+        <FontAwesomeIcon
+          size="xs"
+          icon="plus"
+        />
+      </Button>
+      <Button>
+        <FontAwesomeIcon
+          onClick={() => removeMonster(party, monster.name)}
+          size="1x"
+          icon="trash"
+        />
+      </Button>
+    </ButtonGroup>
+  </ListGroupItem>
 );
 
-const itemSource = {
-  beginDrag: props => ({
-    ...props,
-  }),
+MonsterCard.propTypes = {
+  monster: PropTypes.shape({
+    name: PropTypes.string,
+    number: PropTypes.number,
+    challenge: PropTypes.string,
+    color: PropTypes.string,
+  }).isRequired,
+  party: PropTypes.string.isRequired,
+  removeMonster: PropTypes.func.isRequired,
 };
 
-const collectDrag = (connect, monitor) => ({
-  connectDragSource: connect.dragSource(),
-  dragItemId: monitor.getItem(),
-});
 
-export default DragSource('monsters', itemSource, collectDrag)(MonsterCard);
+export default MonsterCard;

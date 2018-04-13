@@ -14,6 +14,7 @@ import {
   DropdownItem,
 } from 'reactstrap';
 import { NavLink as RoutedNavLink, Link } from 'react-router-dom';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 
 class PageNavBar extends React.Component {
   constructor(props) {
@@ -41,7 +42,9 @@ class PageNavBar extends React.Component {
     return (
       <div>
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">D&D Master Tools</NavbarBrand>
+          <NavbarBrand href="/">
+            <FontAwesomeIcon size="lg" icon={['fab', 'd-and-d']} /> Master Tools
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
