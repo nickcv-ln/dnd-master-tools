@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, Jumbotron } from 'reactstrap';
+import { Row, Col, Jumbotron, Progress, Badge } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import HTML5Backend from 'react-dnd-html5-backend';
@@ -16,6 +16,7 @@ const List = ({
   doPartiesExist,
   selectedParty,
   thresholds,
+  encounterValue,
 }) => {
   const noParty = (
     <div>
@@ -54,6 +55,20 @@ const List = ({
     );
   }
 
+  let color = 'light';
+
+  if (encounterValue <= thresholds.easy) {
+    color = 'success';
+  } else if (encounterValue > thresholds.deadly) {
+    color = 'dark';
+  } else if (encounterValue >= thresholds.hard) {
+    color = 'danger';
+  } else if (encounterValue >= thresholds.medium) {
+    color = 'warning';
+  }
+
+  const displayedValue = encounterValue === 0 ? '' : encounterValue;
+
   return (
     <Page>
       <Row>
@@ -64,6 +79,31 @@ const List = ({
           <Jumbotron className="p-3 mb-3">
             { party }
           </Jumbotron>
+          <Row>
+            <Col lg="3" className="text-center">
+              <Badge color="success" className="p-2">
+                EASY: {thresholds.easy}
+              </Badge>
+            </Col>
+            <Col lg="3" className="text-center">
+              <Badge color="warning" className="p-2">
+                MEDIUM: {thresholds.medium}
+              </Badge>
+            </Col>
+            <Col lg="3" className="text-center">
+              <Badge color="danger" className="p-2">
+                HARD: {thresholds.hard}
+              </Badge>
+            </Col>
+            <Col lg="3" className="text-center">
+              <Badge color="dark" className="p-2">
+                DEADLY: {thresholds.deadly}
+              </Badge>
+            </Col>
+          </Row>
+          <Progress color={color} className="my-2" max={thresholds.deadly} value={encounterValue}>
+            {displayedValue}
+          </Progress>
           <EncounterDetails />
         </Col>
       </Row>
@@ -83,6 +123,7 @@ List.propTypes = {
     hard: PropTypes.number,
     deadly: PropTypes.number,
   }).isRequired,
+  encounterValue: PropTypes.number.isRequired,
 };
 
 List.defaultProps = {

@@ -3,6 +3,8 @@ import {
   CREATE_ENCOUNTER,
   ADD_MONSTER,
   REMOVE_MONSTER,
+  INCREASE_MONSTER_COUNT,
+  DECREASE_MONSTER_COUNT,
 } from 'state/encounters/types';
 
 const defaultState = {};
@@ -21,13 +23,25 @@ const removeMonster = (state, name) => {
     ...state,
   };
 
-  returningState[name].number -= 1;
+  delete returningState[name];
+
+  return returningState;
+};
+
+const changeMonsterNumber = (state, name, increase = true) => {
+  const returningState = {
+    ...state,
+  };
+
+  returningState[name].number += increase ? 1 : -1;
+
   if (returningState[name].number < 1) {
     delete returningState[name];
   }
 
   return returningState;
 };
+
 const reducer = (state = defaultState, action) => {
   // eslint-disable-next-line prefer-destructuring
   const party = action.payload ? action.payload.party : null;
@@ -46,6 +60,16 @@ const reducer = (state = defaultState, action) => {
       return {
         ...state,
         [party]: removeMonster(state[party], action.payload.monster),
+      };
+    case INCREASE_MONSTER_COUNT:
+      return {
+        ...state,
+        [party]: changeMonsterNumber(state[party], action.payload.monster),
+      };
+    case DECREASE_MONSTER_COUNT:
+      return {
+        ...state,
+        [party]: changeMonsterNumber(state[party], action.payload.monster, false),
       };
     default:
       return state;

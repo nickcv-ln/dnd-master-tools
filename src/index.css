@@ -30,7 +30,8 @@ span.legend.dark {
 .droppable {
   border-radius: .25rem;
   border: 1px dashed;
-  height: calc(100vh - 190px);
+  height: calc(100vh - 265px);
+  overflow-y: auto;
 }
 
 .list-group-item:last-child, .list-group-item:first-child {
@@ -56,4 +57,19 @@ span.legend.dark {
   background-color: transparent;
   border-color: transparent;
   color: #6c757d;
+}
+
+.monster-card button:focus {
+  box-shadow: none;
+}
+
+.progress {
+  height: 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 1px solid #6c757d;
+}
+
+.progress .bg-light {
+  color: #000;
 }

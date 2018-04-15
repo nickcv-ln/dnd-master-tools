@@ -6,6 +6,7 @@ import {
   getSelectedParty,
   getPartyThresholds,
 } from 'state/parties/selectors';
+import { getEncounterValue } from 'state/encounters/selectors';
 import List from 'encounters/List';
 
 const mapStateToProps = state => (
@@ -14,6 +15,7 @@ const mapStateToProps = state => (
     doPartiesExist: doPartiesExist(state),
     selectedParty: getSelectedParty(state),
     thresholds: getPartyThresholds(state),
+    encounterValue: getEncounterValue(state),
   }
 );
 

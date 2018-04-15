@@ -13,6 +13,8 @@ class EncounterDetails extends Component {
         monster={this.props.encounter[key]}
         party={this.props.party}
         removeMonster={this.props.removeMonster}
+        increaseMonsterCount={this.props.increaseMonsterCount}
+        decreaseMonsterCount={this.props.decreaseMonsterCount}
       />
     ));
 
@@ -33,6 +35,8 @@ EncounterDetails.propTypes = {
   party: PropTypes.string.isRequired,
   connectDropTarget: PropTypes.func.isRequired,
   removeMonster: PropTypes.func.isRequired,
+  increaseMonsterCount: PropTypes.func.isRequired,
+  decreaseMonsterCount: PropTypes.func.isRequired,
 };
 
 export default DropTarget('monsters', target, collect)(EncounterDetails);

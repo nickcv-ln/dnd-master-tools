@@ -2,7 +2,12 @@ import { connect } from 'react-redux';
 
 import { getCurrentPartyEncounter } from 'state/encounters/selectors';
 import { getSelectedPartyName } from 'state/parties/selectors';
-import { addMonster, removeMonster } from 'state/encounters/actions';
+import {
+  addMonster,
+  removeMonster,
+  increaseMonsterCount,
+  decreaseMonsterCount,
+} from 'state/encounters/actions';
 import EncounterDetails from 'encounters/EncounterDetails';
 
 const mapStateToProps = state => (
@@ -18,6 +23,14 @@ const mapDispatchToProps = dispatch => ({
     ...monster,
   })),
   removeMonster: (party, monster) => dispatch(removeMonster({
+    party,
+    monster,
+  })),
+  increaseMonsterCount: (party, monster) => dispatch(increaseMonsterCount({
+    party,
+    monster,
+  })),
+  decreaseMonsterCount: (party, monster) => dispatch(decreaseMonsterCount({
     party,
     monster,
   })),

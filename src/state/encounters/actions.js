@@ -2,6 +2,8 @@ import {
   CREATE_ENCOUNTER,
   ADD_MONSTER,
   REMOVE_MONSTER,
+  INCREASE_MONSTER_COUNT,
+  DECREASE_MONSTER_COUNT,
 } from 'state/encounters/types';
 
 export const createEncounter = encounter => ({
@@ -16,5 +18,15 @@ export const addMonster = monster => ({
 
 export const removeMonster = monster => ({
   type: REMOVE_MONSTER,
+  payload: monster,
+});
+
+export const increaseMonsterCount = monster => ({
+  type: INCREASE_MONSTER_COUNT,
+  payload: monster,
+});
+
+export const decreaseMonsterCount = monster => ({
+  type: DECREASE_MONSTER_COUNT,
   payload: monster,
 });

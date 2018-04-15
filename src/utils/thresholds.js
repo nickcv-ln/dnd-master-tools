@@ -208,3 +208,30 @@ export const getChallengeForThreshold = (value, matchLower = false, matchHigher 
 
   return returnValue;
 };
+
+const getMultiplier = (numberOfMonsters) => {
+  if (numberOfMonsters === 1) {
+    return 1;
+  } else if (numberOfMonsters === 2) {
+    return 1.5;
+  } else if (numberOfMonsters <= 6) {
+    return 2;
+  } else if (numberOfMonsters <= 10) {
+    return 2.5;
+  } else if (numberOfMonsters <= 14) {
+    return 3;
+  }
+
+  return 4;
+};
+
+export const getEncounterValue = (monsters) => {
+  let totalExperience = 0;
+  let totalMonsters = 0;
+  Object.keys(monsters).forEach((key) => {
+    totalMonsters += monsters[key].number;
+    totalExperience += monsters[key].experience * monsters[key].number;
+  });
+
+  return totalExperience * getMultiplier(totalMonsters);
+};

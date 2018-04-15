@@ -42,7 +42,7 @@ class PageNavBar extends React.Component {
     return (
       <div>
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">
+          <NavbarBrand tag={RoutedNavLink} to="/">
             <FontAwesomeIcon size="lg" icon={['fab', 'd-and-d']} /> Master Tools
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
