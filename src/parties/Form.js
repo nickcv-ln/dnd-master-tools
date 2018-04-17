@@ -5,12 +5,20 @@ import { Button, Form, FormGroup, Label } from 'reactstrap';
 
 import Input from 'common/Input';
 
+const required = value => (value ? undefined : 'Required');
 
 const PartyForm = ({ handleSubmit }) => (
   <Form inline onSubmit={handleSubmit}>
     <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
       <Label className="mb-2 mr-sm-2 mb-sm-0" for="party-name">Party Name</Label>
-      <Field autoFocus name="name" component={Input} id="party-name" type="text" />
+      <Field
+        autoFocus
+        name="name"
+        component={Input}
+        id="party-name"
+        type="text"
+        validate={required}
+      />
     </FormGroup>
     <Button color="primary">Submit</Button>
   </Form>

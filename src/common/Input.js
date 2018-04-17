@@ -1,12 +1,14 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Input as InputBootstrap, FormFeedback, FormText } from 'reactstrap';
+import { Input as InputBootstrap } from 'reactstrap';
 
-const Input = ({ input, meta: { touched, error, warning }, ...custom }) => (
+const Input = ({ input, meta: { touched, error }, ...custom }) => (
   <Fragment>
-    <InputBootstrap {...(touched ? { valid: !error } : {})} {...input} {...custom} />
-    {error && <FormFeedback>{error}</FormFeedback>}
-    {!error && warning && <FormText>{warning}</FormText>}
+    <InputBootstrap
+      {...(touched ? { valid: !error, invalid: error } : {})}
+      {...input}
+      {...custom}
+    />
   </Fragment>
 );
 
