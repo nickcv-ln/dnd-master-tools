@@ -8,7 +8,7 @@ import { DragDropContext } from 'react-dnd';
 
 import Page from 'common/Page';
 import AddParty from 'parties/AddFormContainer';
-import Monsters from 'encounters/Monsters';
+import Monsters from 'encounters/MonstersContainer';
 import EncounterDetails from 'encounters/EncounterDetailsContainer';
 
 const List = ({
