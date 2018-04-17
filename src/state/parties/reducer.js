@@ -27,7 +27,7 @@ const addMember = (state, payload) => ({
 });
 
 const changeLevel = (state, payload, increase = true) => {
-  const currentLevel = state.members[payload.member].level;
+  const currentLevel = parseInt(state.members[payload.member].level, 10);
   return {
     ...state,
     members: {
