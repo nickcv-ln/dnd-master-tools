@@ -22,6 +22,7 @@ const addMember = (state, payload) => ({
     [payload.name]: {
       ...omit(payload, 'party'),
       level: payload.level || 1,
+      ac: payload.ac || 10,
     },
   },
 });

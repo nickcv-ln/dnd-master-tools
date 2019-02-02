@@ -1,3 +1,5 @@
+import hyphenate from 'hyphenate';
+
 import m1u8 from 'data/monsters1_8';
 import m1u4 from 'data/monsters1_4';
 import m1u2 from 'data/monsters1_2';
@@ -30,6 +32,7 @@ import m30 from 'data/monsters30';
 const enrichMob = (challenge, experience) => mob => ({
   challenge,
   experience,
+  id: hyphenate(`${mob.name} ${challenge}`, { lowerCase: true }),
   ...mob,
 });
 

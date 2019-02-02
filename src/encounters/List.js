@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, Jumbotron, Progress, Badge } from 'reactstrap';
+import { Row, Col, Jumbotron, Progress, Badge, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import HTML5Backend from 'react-dnd-html5-backend';
@@ -17,6 +17,7 @@ const List = ({
   selectedParty,
   thresholds,
   encounterValue,
+  save,
 }) => {
   const noParty = (
     <div>
@@ -105,6 +106,7 @@ const List = ({
             {displayedValue}
           </Progress>
           <EncounterDetails />
+          <Button onClick={save} className="encounter-save">Save</Button>
         </Col>
       </Row>
     </Page>
@@ -124,6 +126,7 @@ List.propTypes = {
     deadly: PropTypes.number,
   }).isRequired,
   encounterValue: PropTypes.number.isRequired,
+  save: PropTypes.func.isRequired,
 };
 
 List.defaultProps = {

@@ -49,7 +49,10 @@ class PageNavBar extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink tag={RoutedNavLink} to="/">Encounters</NavLink>
+                <NavLink tag={RoutedNavLink} to="/list">Encounters List</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink tag={RoutedNavLink} to="/">Encounters Creator</NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>

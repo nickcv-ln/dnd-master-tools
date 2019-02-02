@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { toast } from 'react-toastify';
 
 import {
   isPartySelected,
@@ -9,17 +10,19 @@ import {
 import { getEncounterValue } from 'state/encounters/selectors';
 import List from 'encounters/List';
 
-const mapStateToProps = state => (
-  {
-    isPartySelected: isPartySelected(state),
-    doPartiesExist: doPartiesExist(state),
-    selectedParty: getSelectedParty(state),
-    thresholds: getPartyThresholds(state),
-    encounterValue: getEncounterValue(state),
-  }
-);
+const mapStateToProps = state => ({
+  isPartySelected: isPartySelected(state),
+  doPartiesExist: doPartiesExist(state),
+  selectedParty: getSelectedParty(state),
+  thresholds: getPartyThresholds(state),
+  encounterValue: getEncounterValue(state),
+});
+
+const mapDispatchToProps = () => ({
+  save: () => toast.success('encounter saved'),
+});
 
 export default connect(
   mapStateToProps,
-  null,
+  mapDispatchToProps,
 )(List);

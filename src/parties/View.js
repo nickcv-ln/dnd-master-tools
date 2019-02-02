@@ -15,6 +15,7 @@ const View = ({
   const trs = Object.keys(party.members).map(key => (
     <tr key={key}>
       <td>{party.members[key].name}</td>
+      <td>{party.members[key].ac}</td>
       <td>{party.members[key].level}</td>
       <td>
         <FontAwesomeIcon className="mb-2 mr-sm-2 mb-sm-0" size="2x" onClick={() => removeMember(party.name, key)} icon={['far', 'trash-alt']} />
@@ -31,6 +32,7 @@ const View = ({
         <thead>
           <tr>
             <th>Name</th>
+            <th>Armor Class</th>
             <th>Level</th>
             <th className="pull-right">Remove</th>
           </tr>

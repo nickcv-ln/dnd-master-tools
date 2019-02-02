@@ -28,9 +28,9 @@ span.legend.dark {
 }
 
 .droppable {
-  border-radius: .25rem;
+  border-radius: .25rem .25rem 0 0;
   border: 1px dashed;
-  height: calc(100vh - 265px);
+  height: calc(100vh - 265px - 40px);
   overflow-y: auto;
 }
 
@@ -72,4 +72,15 @@ span.legend.dark {
 
 .progress .bg-light {
   color: #000;
+}
+
+input.small-field {
+  width: 50px !important;
+}
+
+.encounter-save {
+  position: sticky;
+  width: 100%;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
