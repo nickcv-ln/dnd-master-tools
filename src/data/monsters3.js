@@ -128,7 +128,7 @@ export default [
   {
     name: 'Nightmare',
     page: {
-      it: 282,
+      it: 38,
     },
   },
   {

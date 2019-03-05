@@ -10,6 +10,9 @@ export default [
   },
   {
     name: 'Adult red dragon',
+    page: {
+      it: 98,
+    },
   },
   {
     name: 'Androsphinx',

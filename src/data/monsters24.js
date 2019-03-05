@@ -7,5 +7,8 @@ export default [
   },
   {
     name: 'Ancient red dragon',
+    page: {
+      it: 97,
+    },
   },
 ];
