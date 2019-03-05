@@ -13,8 +13,14 @@ export default [
   },
   {
     name: 'Lich (not in lair)',
+    page: {
+      it: 196,
+    },
   },
   {
     name: 'Solar',
+    page: {
+      it: 18,
+    },
   },
 ];

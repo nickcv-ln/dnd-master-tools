@@ -13,8 +13,14 @@ export default [
   },
   {
     name: 'Demilich (in lair)',
+    page: {
+      it: 48,
+    },
   },
   {
     name: 'Pit fiend',
+    page: {
+      it: 74,
+    },
   },
 ];
