@@ -13,14 +13,26 @@ export default [
   },
   {
     name: 'Iron golem',
+    page: {
+      it: 171,
+    },
   },
   {
     name: 'Marilith',
+    page: {
+      it: 61,
+    },
   },
   {
     name: 'Mummy lord (in lair)',
+    page: {
+      it: 233,
+    },
   },
   {
     name: 'Planetar',
+    page: {
+      it: 17,
+    },
   },
 ];
