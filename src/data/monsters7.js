@@ -34,6 +34,9 @@ export default [
   },
   {
     name: 'Young copper dragon',
+    page: {
+      it: 111,
+    },
   },
   {
     name: 'Yuan-ti abomination',

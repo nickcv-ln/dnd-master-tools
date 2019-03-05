@@ -4,6 +4,9 @@ export default [
   },
   {
     name: 'Adult copper dragon',
+    page: {
+      it: 111,
+    },
   },
   {
     name: 'Beholder (in lair)',

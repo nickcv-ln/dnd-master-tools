@@ -4,6 +4,9 @@ export default [
   },
   {
     name: 'Ancient copper dragon',
+    page: {
+      it: 110,
+    },
   },
   {
     name: 'Lich (not in lair)',
