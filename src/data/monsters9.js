@@ -31,5 +31,8 @@ export default [
   },
   {
     name: 'Young silver dragon',
+    page: {
+      it: 106,
+    },
   },
 ];

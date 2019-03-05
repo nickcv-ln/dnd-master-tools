@@ -4,6 +4,9 @@ export default [
   },
   {
     name: 'Ancient silver dragon',
+    page: {
+      it: 104,
+    },
   },
   {
     name: 'Empyrean',

@@ -49,5 +49,8 @@ export default [
   },
   {
     name: 'Young white dragon',
+    page: {
+      it: 88,
+    },
   },
 ];

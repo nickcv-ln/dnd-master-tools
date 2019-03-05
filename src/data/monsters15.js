@@ -1,9 +1,15 @@
 export default [
   {
     name: 'Adult bronze dragon',
+    page: {
+      it: 108,
+    },
   },
   {
     name: 'Adult green dragon',
+    page: {
+      it: 101,
+    },
   },
   {
     name: 'Death tyrant (in lair)',

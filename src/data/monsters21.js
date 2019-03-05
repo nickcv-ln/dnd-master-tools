@@ -1,6 +1,9 @@
 export default [
   {
     name: 'Ancient black dragon',
+    page: {
+      it: 94,
+    },
   },
   {
     name: 'Ancient copper dragon',

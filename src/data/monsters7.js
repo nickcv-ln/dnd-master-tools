@@ -31,6 +31,9 @@ export default [
   },
   {
     name: 'Young black dragon',
+    page: {
+      it: 95,
+    },
   },
   {
     name: 'Young copper dragon',

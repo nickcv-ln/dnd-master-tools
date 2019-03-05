@@ -7,6 +7,9 @@ export default [
   },
   {
     name: 'Ancient white dragon',
+    page: {
+      it: 87,
+    },
   },
   {
     name: 'Demilich (in lair)',

@@ -4,6 +4,9 @@ export default [
   },
   {
     name: 'Adult silver dragon',
+    page: {
+      it: 105,
+    },
   },
   {
     name: 'Iron golem',
