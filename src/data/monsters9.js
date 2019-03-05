@@ -28,6 +28,9 @@ export default [
   },
   {
     name: 'Young blue dragon',
+    page: {
+      it: 92,
+    },
   },
   {
     name: 'Young silver dragon',

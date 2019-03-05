@@ -4,6 +4,9 @@ export default [
   },
   {
     name: 'Adult gold dragon',
+    page: {
+      it: 114,
+    },
   },
   {
     name: 'Adult red dragon',

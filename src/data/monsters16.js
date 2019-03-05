@@ -1,6 +1,9 @@
 export default [
   {
     name: 'Adult blue dragon',
+    page: {
+      it: 92,
+    },
   },
   {
     name: 'Adult silver dragon',
