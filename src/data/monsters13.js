@@ -2,7 +2,7 @@ export default [
   {
     name: 'Adult brass dragon',
     page: {
-      it: 108,
+      it: 117,
     },
   },
   {
