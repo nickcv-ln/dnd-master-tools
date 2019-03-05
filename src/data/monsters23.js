@@ -13,8 +13,14 @@ export default [
   },
   {
     name: 'Empyrean',
+    page: {
+      it: 130,
+    },
   },
   {
     name: 'Kraken',
+    page: {
+      it: 185,
+    },
   },
 ];

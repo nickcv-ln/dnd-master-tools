@@ -13,5 +13,8 @@ export default [
   },
   {
     name: 'Lich (in lair)',
+    page: {
+      it: 196,
+    },
   },
 ];
