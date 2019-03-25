@@ -6,7 +6,9 @@ import persistState from 'redux-localstorage';
 
 import rootReducer from 'state/rootReducer';
 
-export const history = createHistory();
+export const history = createHistory({
+  basename: process.env.PUBLIC_URL,
+});
 
 const composeParams = [
   applyMiddleware(thunk),
