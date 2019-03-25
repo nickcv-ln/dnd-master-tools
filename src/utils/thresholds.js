@@ -180,7 +180,11 @@ export const getPartyThresholds = (party) => {
 
   if (party) {
     Object.values(party.members).forEach(({ level }) => {
-      addThresholdForLevel(level > 20 ? 20 : level);
+      addThresholdForLevel(level > 20 ?
+        20 :
+        level < 1 ?
+          1 :
+          level);
     });
   }
 

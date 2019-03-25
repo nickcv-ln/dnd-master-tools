@@ -31,7 +31,7 @@ export const getPartyList = createSelector(
 
 export const getParty = party => createSelector(
   getParties,
-  parties => parties.parties[party],
+  parties => parties.parties[party] || null,
 );
 
 export const getPartyThresholds = createSelector(
