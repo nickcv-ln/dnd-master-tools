@@ -54,6 +54,6 @@ export const decreaseLevel = (party, memberName) => ({
 
 export const createParty = party => (dispatch) => {
   dispatch(addParty(party));
-  dispatch(selectParty(party.name));
-  dispatch(push(`/parties/view/${party.name}`));
+  dispatch(selectParty(party));
+  dispatch(push(`/parties/view/${party}`));
 };

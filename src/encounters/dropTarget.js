@@ -8,9 +8,9 @@ export const collect = connect => ({
 
 export const target = {
   drop: (props, monitor) => {
-    store.dispatch(addMonster({
-      party: getSelectedPartyName(store.getState()),
-      ...monitor.getItem(),
-    }));
+    store.dispatch(addMonster(
+      getSelectedPartyName(store.getState()),
+      monitor.getItem(),
+    ));
   },
 };

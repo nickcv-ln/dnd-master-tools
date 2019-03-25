@@ -85,14 +85,13 @@ describe('state/parties actions', () => {
 
   describe('createParty', () => {
     it('dispatches all the necessary actions', () => {
-      const party = { name: 'myParty' };
-      store.dispatch(createParty(party));
+      store.dispatch(createParty('myParty'));
       const actions = store.getActions();
       expect(actions).toHaveLength(3);
       expect(actions[0]).toHaveProperty('type', ADD_PARTY);
-      expect(actions[0]).toHaveProperty('payload', party);
+      expect(actions[0]).toHaveProperty('payload', 'myParty');
       expect(actions[1]).toHaveProperty('type', SELECT_PARTY);
-      expect(actions[1]).toHaveProperty('payload', party.name);
+      expect(actions[1]).toHaveProperty('payload', 'myParty');
       expect(actions[2]).toHaveProperty('type', '@@router/CALL_HISTORY_METHOD');
     });
   });

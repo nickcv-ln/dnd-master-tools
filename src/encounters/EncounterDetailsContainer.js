@@ -18,22 +18,22 @@ const mapStateToProps = state => (
 );
 
 const mapDispatchToProps = dispatch => ({
-  addMonster: (party, monster) => dispatch(addMonster({
-    party,
-    ...monster,
-  })),
-  removeMonster: (party, monster) => dispatch(removeMonster({
+  addMonster: (party, monster) => dispatch(addMonster(
     party,
     monster,
-  })),
-  increaseMonsterCount: (party, monster) => dispatch(increaseMonsterCount({
+  )),
+  removeMonster: (party, monster) => dispatch(removeMonster(
     party,
     monster,
-  })),
-  decreaseMonsterCount: (party, monster) => dispatch(decreaseMonsterCount({
+  )),
+  increaseMonsterCount: (party, monster) => dispatch(increaseMonsterCount(
     party,
     monster,
-  })),
+  )),
+  decreaseMonsterCount: (party, monster) => dispatch(decreaseMonsterCount(
+    party,
+    monster,
+  )),
 });
 
 export default connect(

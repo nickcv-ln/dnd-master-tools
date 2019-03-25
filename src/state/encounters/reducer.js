@@ -59,17 +59,17 @@ const reducer = (state = defaultState, action) => {
     case REMOVE_MONSTER:
       return {
         ...state,
-        [party]: removeMonster(state[party], action.payload.monster),
+        [party]: removeMonster(state[party], action.payload.monsterName),
       };
     case INCREASE_MONSTER_COUNT:
       return {
         ...state,
-        [party]: changeMonsterNumber(state[party], action.payload.monster),
+        [party]: changeMonsterNumber(state[party], action.payload.monsterName),
       };
     case DECREASE_MONSTER_COUNT:
       return {
         ...state,
-        [party]: changeMonsterNumber(state[party], action.payload.monster, false),
+        [party]: changeMonsterNumber(state[party], action.payload.monsterName, false),
       };
     default:
       return state;

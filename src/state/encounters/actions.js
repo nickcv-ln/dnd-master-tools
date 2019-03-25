@@ -6,27 +6,39 @@ import {
   DECREASE_MONSTER_COUNT,
 } from 'state/encounters/types';
 
-export const createEncounter = encounter => ({
+export const createEncounter = party => ({
   type: CREATE_ENCOUNTER,
-  payload: encounter,
+  payload: party,
 });
 
-export const addMonster = monster => ({
+export const addMonster = (party, monster) => ({
   type: ADD_MONSTER,
-  payload: monster,
+  payload: {
+    party,
+    monster,
+  },
 });
 
-export const removeMonster = monster => ({
+export const removeMonster = (party, monsterName) => ({
   type: REMOVE_MONSTER,
-  payload: monster,
+  payload: {
+    party,
+    monsterName,
+  },
 });
 
-export const increaseMonsterCount = monster => ({
+export const increaseMonsterCount = (party, monsterName) => ({
   type: INCREASE_MONSTER_COUNT,
-  payload: monster,
+  payload: {
+    party,
+    monsterName,
+  },
 });
 
-export const decreaseMonsterCount = monster => ({
+export const decreaseMonsterCount = (party, monsterName) => ({
   type: DECREASE_MONSTER_COUNT,
-  payload: monster,
+  payload: {
+    party,
+    monsterName,
+  },
 });
