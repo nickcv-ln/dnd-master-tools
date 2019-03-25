@@ -6,10 +6,10 @@ import Form from 'parties/members/Form';
 
 const mapDispatchToProps = (dispatch, { party }) => ({
   onSubmit: (data) => {
-    dispatch(addMember({
-      ...data,
+    dispatch(addMember(
       party,
-    }));
+      data,
+    ));
   },
   resetSection: (input) => {
     dispatch(resetSection('new-member', input));

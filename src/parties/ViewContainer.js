@@ -11,18 +11,18 @@ const mapStateToProps = (state, { match: { params } }) => (
 );
 
 const mapDispatchToProps = dispatch => ({
-  removeMember: (party, member) => dispatch(removeMember({
+  removeMember: (party, member) => dispatch(removeMember(
     party,
     member,
-  })),
-  increaseLevel: (party, member) => dispatch(increaseLevel({
+  )),
+  increaseLevel: (party, member) => dispatch(increaseLevel(
     party,
     member,
-  })),
-  decreaseLevel: (party, member) => dispatch(decreaseLevel({
+  )),
+  decreaseLevel: (party, member) => dispatch(decreaseLevel(
     party,
     member,
-  })),
+  )),
 });
 
 export default connect(

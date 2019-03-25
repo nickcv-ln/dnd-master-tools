@@ -18,24 +18,36 @@ export const selectParty = party => ({
   payload: party,
 });
 
-export const addMember = member => ({
+export const addMember = (party, member) => ({
   type: ADD_MEMBER,
-  payload: member,
+  payload: {
+    party,
+    member,
+  },
 });
 
-export const removeMember = member => ({
+export const removeMember = (party, memberName) => ({
   type: REMOVE_MEMBER,
-  payload: member,
+  payload: {
+    party,
+    memberName,
+  },
 });
 
-export const increaseLevel = member => ({
+export const increaseLevel = (party, memberName) => ({
   type: INCREASE_LEVEL,
-  payload: member,
+  payload: {
+    party,
+    memberName,
+  },
 });
 
-export const decreaseLevel = member => ({
+export const decreaseLevel = (party, memberName) => ({
   type: DECREASE_LEVEL,
-  payload: member,
+  payload: {
+    party,
+    memberName,
+  },
 });
 
 // thunks

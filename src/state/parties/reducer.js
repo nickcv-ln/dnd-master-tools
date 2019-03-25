@@ -20,31 +20,31 @@ const addMember = (state, payload) => ({
   members: {
     ...state.members,
     [payload.name]: {
-      ...omit(payload, 'party'),
+      ...payload,
       level: payload.level || 1,
       ac: payload.ac || 10,
     },
   },
 });
 
-const changeLevel = (state, payload, increase = true) => {
-  const currentLevel = parseInt(state.members[payload.member].level, 10);
+const changeLevel = (state, memberName, increase = true) => {
+  const currentLevel = parseInt(state.members[memberName].level, 10);
   return {
     ...state,
     members: {
       ...state.members,
-      [payload.member]: {
-        name: state.members[payload.member].name,
+      [memberName]: {
+        ...state.members[memberName],
         level: increase ? currentLevel + 1 : currentLevel - 1,
       },
     },
   };
 };
 
-const removeMember = (state, payload) => ({
+const removeMember = (state, memberName) => ({
   ...state,
   members: {
-    ...omit(state.members, payload.member),
+    ...omit(state.members, memberName),
   },
 });
 
@@ -79,23 +79,29 @@ const parties = (state = defaultState.parties, action) => {
     case ADD_MEMBER:
       return {
         ...state,
-        [action.payload.party]: addMember(state[action.payload.party], action.payload),
+        [action.payload.party]: addMember(state[action.payload.party], action.payload.member),
       };
-    case REMOVE_MEMBER:
+    case REMOVE_MEMBER: {
+      const { party, memberName } = action.payload;
       return {
         ...state,
-        [action.payload.party]: removeMember(state[action.payload.party], action.payload),
+        [party]: removeMember(state[party], memberName),
       };
-    case INCREASE_LEVEL:
+    }
+    case INCREASE_LEVEL: {
+      const { party, memberName } = action.payload;
       return {
         ...state,
-        [action.payload.party]: changeLevel(state[action.payload.party], action.payload),
+        [party]: changeLevel(state[party], memberName),
       };
-    case DECREASE_LEVEL:
+    }
+    case DECREASE_LEVEL: {
+      const { party, memberName } = action.payload;
       return {
         ...state,
-        [action.payload.party]: changeLevel(state[action.payload.party], action.payload, false),
+        [party]: changeLevel(state[party], memberName, false),
       };
+    }
     default:
       return state;
   }

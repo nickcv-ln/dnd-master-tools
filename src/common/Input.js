@@ -5,7 +5,7 @@ import { Input as InputBootstrap } from 'reactstrap';
 const Input = ({ input, meta: { touched, error }, ...custom }) => (
   <Fragment>
     <InputBootstrap
-      {...(touched ? { valid: !error, invalid: error } : {})}
+      {...(touched ? { valid: !error, invalid: !!error } : {})}
       {...input}
       {...custom}
     />
