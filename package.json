@@ -2,6 +2,7 @@
   "name": "dnd-master-tools",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/dnd-master-tools/",
   "dependencies": {
     "@fortawesome/fontawesome": "^1.1.5",
     "@fortawesome/fontawesome-free-brands": "^5.0.10",
