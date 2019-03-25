@@ -7,7 +7,7 @@ import Form from 'parties/Form';
 
 const mapDispatchToProps = dispatch => ({
   onSubmit: (data) => {
-    dispatch(createParty(data));
+    dispatch(createParty(data.name));
     dispatch(createEncounter({
       party: data.name,
     }));

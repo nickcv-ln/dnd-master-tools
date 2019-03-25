@@ -28,6 +28,9 @@ const addMember = (state, payload) => ({
 });
 
 const changeLevel = (state, memberName, increase = true) => {
+  if (!state.members[memberName]) {
+    return state;
+  }
   const currentLevel = parseInt(state.members[memberName].level, 10);
   return {
     ...state,
@@ -48,16 +51,16 @@ const removeMember = (state, memberName) => ({
   },
 });
 
-const list = (state = defaultState.list, action) => {
+const list = (state = defaultState.list, action = {}) => {
   switch (action.type) {
     case ADD_PARTY:
-      return [...state, action.payload.name];
+      return [...state, action.payload];
     default:
       return state;
   }
 };
 
-const currentParty = (state = defaultState.currentParty, action) => {
+const currentParty = (state = defaultState.currentParty, action = {}) => {
   switch (action.type) {
     case SELECT_PARTY:
       return action.payload;
@@ -66,13 +69,13 @@ const currentParty = (state = defaultState.currentParty, action) => {
   }
 };
 
-const parties = (state = defaultState.parties, action) => {
+const parties = (state = defaultState.parties, action = {}) => {
   switch (action.type) {
     case ADD_PARTY:
       return {
         ...state,
-        [action.payload.name]: {
-          ...action.payload,
+        [action.payload]: {
+          name: action.payload,
           members: {},
         },
       };
