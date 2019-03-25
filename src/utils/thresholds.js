@@ -174,17 +174,18 @@ const addThresholdForLevel = (level) => {
   thresholds.deadly += referenceTable[level].deadly;
 };
 
-// eslint-disable-next-line import/prefer-default-export
 export const getPartyThresholds = (party) => {
   resetThresholds();
 
-  if (party) {
+  if (party && party.members) {
     Object.values(party.members).forEach(({ level }) => {
-      addThresholdForLevel(level > 20 ?
-        20 :
-        level < 1 ?
-          1 :
-          level);
+      if (level) {
+        addThresholdForLevel(level > 20 ?
+          20 :
+          level < 1 ?
+            1 :
+            level);
+      }
     });
   }
 
