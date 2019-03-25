@@ -33,6 +33,10 @@ const changeMonsterNumber = (state, name, increase = true) => {
     ...state,
   };
 
+  if (!returningState[name]) {
+    return state;
+  }
+
   returningState[name].number += increase ? 1 : -1;
 
   if (returningState[name].number < 1) {
@@ -42,7 +46,7 @@ const changeMonsterNumber = (state, name, increase = true) => {
   return returningState;
 };
 
-const reducer = (state = defaultState, action) => {
+const reducer = (state = defaultState, action = {}) => {
   // eslint-disable-next-line prefer-destructuring
   const party = action.payload ? action.payload.party : null;
   switch (action.type) {
@@ -54,7 +58,7 @@ const reducer = (state = defaultState, action) => {
     case ADD_MONSTER:
       return {
         ...state,
-        [party]: addMonster(state[party], omit(action.payload, 'party')),
+        [party]: addMonster(state[party], omit(action.payload.monster, 'party')),
       };
     case REMOVE_MONSTER:
       return {

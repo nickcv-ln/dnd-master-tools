@@ -18,7 +18,8 @@ describe('state/encounters actions', () => {
     it('returns the proper action', () => {
       const action = createEncounter('myEncounter');
       expect(action).toHaveProperty('type', CREATE_ENCOUNTER);
-      expect(action).toHaveProperty('payload', 'myEncounter');
+      expect(action).toHaveProperty('payload');
+      expect(action).toHaveProperty('payload.party', 'myEncounter');
     });
   });
 

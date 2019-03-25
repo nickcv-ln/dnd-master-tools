@@ -8,7 +8,9 @@ import {
 
 export const createEncounter = party => ({
   type: CREATE_ENCOUNTER,
-  payload: party,
+  payload: {
+    party,
+  },
 });
 
 export const addMonster = (party, monster) => ({
