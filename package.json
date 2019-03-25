@@ -106,6 +106,10 @@
       "jsx",
       "node",
       "mjs"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "src"
     ]
   },
   "babel": {
@@ -117,7 +121,8 @@
     "extends": "airbnb",
     "env": {
       "browser": true,
-      "node": true
+      "node": true,
+      "jest": true
     },
     "settings": {
       "import/resolver": {

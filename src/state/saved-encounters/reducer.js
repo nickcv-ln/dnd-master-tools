@@ -8,7 +8,7 @@ import {
 
 const defaultState = {};
 
-const reducer = (state = defaultState, action) => {
+const reducer = (state = defaultState, action = {}) => {
   // eslint-disable-next-line prefer-destructuring
   const party = action.payload ? action.payload.party : null;
   switch (action.type) {
@@ -24,13 +24,19 @@ const reducer = (state = defaultState, action) => {
     case ADD_ENCOUNTER:
       return {
         ...state,
-        [party]: action.payload.encounter,
+        [party]: [
+          ...state[party],
+          action.payload.encounter,
+        ],
       };
-    case REMOVE_ENCOUNTER:
+    case REMOVE_ENCOUNTER: {
+      const newParty = [...state[party]];
+      newParty.splice(action.payload.encounter, 1);
       return {
         ...state,
-        [party]: state[party].splice(action.payload.encounter, 1),
+        [party]: newParty,
       };
+    }
     default:
       return state;
   }

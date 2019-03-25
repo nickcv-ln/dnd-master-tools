@@ -19,7 +19,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = () => ({
-  save: () => toast.success('encounter saved'),
+  save: () => toast.success('feature under development'),
 });
 
 export default connect(

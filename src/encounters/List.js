@@ -106,7 +106,7 @@ const List = ({
             {displayedValue}
           </Progress>
           <EncounterDetails />
-          <Button onClick={save} className="encounter-save">Save</Button>
+          <Button disabled onClick={save} className="encounter-save">Save</Button>
         </Col>
       </Row>
     </Page>
