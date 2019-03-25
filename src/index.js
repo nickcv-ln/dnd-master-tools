@@ -12,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { store, history } from 'state/store';
 import Router from 'router';
-import registerServiceWorker from 'registerServiceWorker';
+// import registerServiceWorker from 'registerServiceWorker';
 import 'index.css';
 
 fontawesome.library.add(regular, solid, brand);
@@ -28,4 +28,4 @@ render(
   </div>,
   document.getElementById('root'),
 );
-registerServiceWorker();
+// registerServiceWorker();
