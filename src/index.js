@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'react-router-redux';
+import { Router as BrowserRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import fontawesome from '@fortawesome/fontawesome';
 import regular from '@fortawesome/fontawesome-free-regular';
@@ -10,7 +10,8 @@ import brand from '@fortawesome/fontawesome-free-brands';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { store, history } from 'state/store';
+import store from 'state/store';
+import history from 'utils/history';
 import Router from 'router';
 // import registerServiceWorker from 'registerServiceWorker';
 import 'index.css';
@@ -21,9 +22,9 @@ render(
   <div>
     <ToastContainer />
     <Provider store={store}>
-      <ConnectedRouter history={history}>
+      <BrowserRouter history={history}>
         <Router />
-      </ConnectedRouter>
+      </BrowserRouter>
     </Provider>
   </div>,
   document.getElementById('root'),
