@@ -1,4 +1,4 @@
-import { store } from 'state/store';
+import store from 'state/store';
 import { addMonster } from 'state/encounters/actions';
 import { getSelectedPartyName } from 'state/parties/selectors';
 

@@ -1,5 +1,6 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+import history from 'utils/history';
 import {
   addParty,
   selectParty,
@@ -20,6 +21,8 @@ import {
 
 const middlewares = [thunk];
 const store = configureMockStore(middlewares)();
+
+jest.mock('utils/history');
 
 describe('state/parties actions', () => {
   describe('addParty', () => {
@@ -87,12 +90,12 @@ describe('state/parties actions', () => {
     it('dispatches all the necessary actions', () => {
       store.dispatch(createParty('myParty'));
       const actions = store.getActions();
-      expect(actions).toHaveLength(3);
+      expect(actions).toHaveLength(2);
       expect(actions[0]).toHaveProperty('type', ADD_PARTY);
       expect(actions[0]).toHaveProperty('payload', 'myParty');
       expect(actions[1]).toHaveProperty('type', SELECT_PARTY);
       expect(actions[1]).toHaveProperty('payload', 'myParty');
-      expect(actions[2]).toHaveProperty('type', '@@router/CALL_HISTORY_METHOD');
+      expect(history.push).toHaveBeenCalledWith('/parties/view/myParty');
     });
   });
 });

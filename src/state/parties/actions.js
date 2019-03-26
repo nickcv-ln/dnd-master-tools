@@ -6,7 +6,7 @@ import {
   INCREASE_LEVEL,
   DECREASE_LEVEL,
 } from 'state/parties/types';
-import { push } from 'react-router-redux';
+import history from 'utils/history';
 
 export const addParty = party => ({
   type: ADD_PARTY,
@@ -55,5 +55,5 @@ export const decreaseLevel = (party, memberName) => ({
 export const createParty = party => (dispatch) => {
   dispatch(addParty(party));
   dispatch(selectParty(party));
-  dispatch(push(`/parties/view/${party}`));
+  history.push(`/parties/view/${party}`);
 };
