@@ -7,25 +7,31 @@ import { target, collect } from 'encounters/dropTarget';
 
 class EncounterDetails extends Component {
   render() {
-    const monsters = Object.keys(this.props.encounter).map(key => (
+    const {
+      encounter,
+      party,
+      removeMonster,
+      increaseMonsterCount,
+      decreaseMonsterCount,
+      connectDropTarget,
+    } = this.props;
+    const monsters = Object.keys(encounter).map(key => (
       <MonsterCard
         key={key}
-        monster={this.props.encounter[key]}
-        party={this.props.party}
-        removeMonster={this.props.removeMonster}
-        increaseMonsterCount={this.props.increaseMonsterCount}
-        decreaseMonsterCount={this.props.decreaseMonsterCount}
+        monster={encounter[key]}
+        party={party}
+        removeMonster={removeMonster}
+        increaseMonsterCount={increaseMonsterCount}
+        decreaseMonsterCount={decreaseMonsterCount}
       />
     ));
 
     return (
-      /* eslint-disable function-paren-newline */
-      this.props.connectDropTarget(
+      connectDropTarget(
         <div className="droppable">
           { monsters }
         </div>,
       )
-      /* eslint-enable */
     );
   }
 }

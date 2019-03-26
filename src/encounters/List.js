@@ -1,6 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, Jumbotron, Progress, Badge, Button } from 'reactstrap';
+import {
+  Row,
+  Col,
+  Jumbotron,
+  Progress,
+  Badge,
+  Button,
+} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import HTML5Backend from 'react-dnd-html5-backend';

@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
-import { Button, Form, FormGroup, Label } from 'reactstrap';
+import {
+  Button,
+  Form,
+  FormGroup,
+  Label,
+} from 'reactstrap';
 
 import Input from 'common/Input';
 

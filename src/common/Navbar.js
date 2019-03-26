@@ -27,16 +27,19 @@ class PageNavBar extends React.Component {
   }
 
   toggle() {
+    const { isOpen } = this.state;
     this.setState({
-      isOpen: !this.state.isOpen,
+      isOpen: !isOpen,
     });
   }
 
   render() {
-    const selectedParty = this.props.selectedParty ? <kbd>{ this.props.selectedParty.name }</kbd> : 'select a party';
-    const parties = Object.keys(this.props.parties).map(key => (
-      <DropdownItem key={key} onClick={() => this.props.selectParty(key)}>
-        { this.props.parties[key].name }
+    const { selectedParty, parties, selectParty } = this.props;
+    const { isOpen } = this.state;
+    const selectedPartyText = selectedParty ? <kbd>{ selectedParty.name }</kbd> : 'select a party';
+    const partiesText = Object.keys(parties).map(key => (
+      <DropdownItem key={key} onClick={() => selectParty(key)}>
+        { parties[key].name }
       </DropdownItem>
     ));
     return (
@@ -46,7 +49,7 @@ class PageNavBar extends React.Component {
             <FontAwesomeIcon size="lg" icon={['fab', 'd-and-d']} /> Master Tools
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
+          <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink tag={RoutedNavLink} to="/list">Encounters List</NavLink>
@@ -56,10 +59,10 @@ class PageNavBar extends React.Component {
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
-                  { selectedParty }
+                  { selectedPartyText }
                 </DropdownToggle>
                 <DropdownMenu right>
-                  { parties }
+                  { partiesText }
                   <DropdownItem divider />
                   <DropdownItem>
                     <NavLink tag={Link} to="/parties/add">Add Party</NavLink>

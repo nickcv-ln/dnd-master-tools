@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
-import { Button, Form, FormGroup, Label } from 'reactstrap';
+import {
+  Button,
+  Form,
+  FormGroup,
+  Label,
+} from 'reactstrap';
 
 import Input from 'common/Input';
 
@@ -16,8 +21,9 @@ class PartyForm extends Component {
   }
 
   handleSubmit(e) {
-    this.props.handleSubmit(e);
-    this.props.resetSection('name');
+    const { handleSubmit, resetSection } = this.props;
+    handleSubmit(e);
+    resetSection('name');
     // eslint-disable-next-line react/no-find-dom-node
     ReactDOM.findDOMNode(this.name).focus();
   }
