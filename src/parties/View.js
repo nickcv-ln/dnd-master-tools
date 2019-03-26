@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Redirect } from 'react-router-dom';
 
 import Page from 'common/Page';
 import MemberForm from 'parties/members/AddFormContainer';
@@ -12,6 +13,10 @@ const View = ({
   increaseLevel,
   decreaseLevel,
 }) => {
+  if (party === null) {
+    return <Redirect to="/" />;
+  }
+
   const trs = Object.keys(party.members).map(key => (
     <tr key={key}>
       <td>{party.members[key].name}</td>

@@ -74,26 +74,29 @@ class Monsters extends Component {
   }
 
   filterMonsters(monster) {
+    const { maxChallenge, minChallenge, filter } = this.state;
+    const { thresholds } = this.props;
     const challenge = this.normalizeChallenge(monster.challenge);
-    if (challenge > this.state.maxChallenge) {
+
+    if (challenge > maxChallenge) {
       return '';
     }
-    if (challenge < this.state.minChallenge) {
+    if (challenge < minChallenge) {
       return '';
     }
-    if (this.state.filter.length && !monster.name.toLowerCase().includes(this.state.filter)) {
+    if (filter.length && !monster.name.toLowerCase().includes(filter)) {
       return '';
     }
 
     let color = 'default';
 
-    if (monster.experience <= this.props.thresholds.easy) {
+    if (monster.experience <= thresholds.easy) {
       color = 'success';
-    } else if (monster.experience > this.props.thresholds.deadly) {
+    } else if (monster.experience > thresholds.deadly) {
       color = 'dark';
-    } else if (monster.experience >= this.props.thresholds.hard) {
+    } else if (monster.experience >= thresholds.hard) {
       color = 'danger';
-    } else if (monster.experience >= this.props.thresholds.medium) {
+    } else if (monster.experience >= thresholds.medium) {
       color = 'warning';
     }
 
@@ -103,6 +106,7 @@ class Monsters extends Component {
   }
 
   render() {
+    const { minChallenge, maxChallenge } = this.state;
     const items = monsterList.map(this.filterMonsters);
 
     const challenges = (
@@ -146,13 +150,13 @@ class Monsters extends Component {
         <div className="form-inline d-flex mt-2">
           <InputGroup className="col-md-6 col-xs-12 mt-md-0 mt-2">
             <InputGroupAddon addonType="prepend">min challenge</InputGroupAddon>
-            <Input type="select" value={this.state.minChallenge} onChange={this.updateMinChallenge}>
+            <Input type="select" value={minChallenge} onChange={this.updateMinChallenge}>
               { challenges }
             </Input>
           </InputGroup>
           <InputGroup className="col-md-6 col-xs-12 mt-md-0 mt-2">
             <InputGroupAddon addonType="prepend">max challenge</InputGroupAddon>
-            <Input type="select" value={this.state.maxChallenge} onChange={this.updateMaxChallenge}>
+            <Input type="select" value={maxChallenge} onChange={this.updateMaxChallenge}>
               { challenges }
             </Input>
           </InputGroup>
