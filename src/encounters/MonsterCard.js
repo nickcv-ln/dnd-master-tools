@@ -5,7 +5,7 @@ import {
   Button,
   ListGroupItem,
 } from 'reactstrap';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const MonsterCard = ({
   monster,

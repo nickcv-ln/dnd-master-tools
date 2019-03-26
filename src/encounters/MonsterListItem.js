@@ -1,7 +1,7 @@
 import React from 'react';
 import { DragSource } from 'react-dnd';
 import { ListGroupItem, UncontrolledPopover, PopoverBody } from 'reactstrap';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const MonsterListItem = ({
   connectDragSource,
@@ -23,7 +23,7 @@ export const MonsterListItem = ({
     <div>
       <ListGroupItem color={color}>
         {name} [{challenge} - exp {experience}]
-        <FontAwesomeIcon id={id} icon={['fas', 'info-circle']} className="float-right mt-2 text-info" />
+        <FontAwesomeIcon id={id} icon='info-circle' className="float-right mt-2 text-info" />
         <UncontrolledPopover trigger="focus" target={id}>
           <PopoverBody>
             {languages}

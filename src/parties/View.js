@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'reactstrap';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Page from 'common/Page';
 import MemberForm from 'parties/members/AddFormContainer';
@@ -18,9 +18,24 @@ const View = ({
       <td>{party.members[key].ac}</td>
       <td>{party.members[key].level}</td>
       <td>
-        <FontAwesomeIcon className="mb-2 mr-sm-2 mb-sm-0" size="2x" onClick={() => removeMember(party.name, key)} icon={['far', 'trash-alt']} />
-        <FontAwesomeIcon className="mb-2 mr-sm-2 mb-sm-0" size="2x" onClick={() => increaseLevel(party.name, key)} icon={['far', 'caret-square-up']} />
-        <FontAwesomeIcon className="mb-2 mr-sm-2 mb-sm-0" size="2x" onClick={() => decreaseLevel(party.name, key)} icon={['far', 'caret-square-down']} />
+        <FontAwesomeIcon
+          className="mb-2 mr-sm-2 mb-sm-0"
+          size="2x"
+          onClick={() => removeMember(party.name, key)}
+          icon="trash-alt"
+        />
+        <FontAwesomeIcon
+          className="mb-2 mr-sm-2 mb-sm-0"
+          size="2x"
+          onClick={() => increaseLevel(party.name, key)}
+          icon="caret-square-up"
+        />
+        <FontAwesomeIcon
+          className="mb-2 mr-sm-2 mb-sm-0"
+          size="2x"
+          onClick={() => decreaseLevel(party.name, key)}
+          icon="caret-square-down"
+        />
       </td>
     </tr>
   ));
