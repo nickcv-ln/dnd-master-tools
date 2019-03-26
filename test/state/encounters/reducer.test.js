@@ -20,7 +20,7 @@ describe('state/encounters reducer', () => {
 
   describe('after the createEncounter action', () => {
     it('creates the empty party encounter', () => {
-      state = reducer(state, createEncounter('myParty'));
+      state = reducer(state, createEncounter({ party: 'myParty' }));
       expect(state).toHaveProperty('myParty', {});
     });
 
