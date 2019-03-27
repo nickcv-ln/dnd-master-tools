@@ -11,7 +11,7 @@ export const getSelectedPartyName = createSelector(
 export const getSelectedParty = createSelector(
   getParties,
   getSelectedPartyName,
-  (parties, currentParty) => parties.parties[currentParty],
+  (parties, currentParty) => parties.parties[currentParty] || null,
 );
 
 export const isPartySelected = createSelector(
@@ -36,5 +36,5 @@ export const getParty = party => createSelector(
 
 export const getPartyThresholds = createSelector(
   getSelectedParty,
-  selectedParty => getThresholds(selectedParty),
+  selectedParty => ({ ...getThresholds(selectedParty) }),
 );

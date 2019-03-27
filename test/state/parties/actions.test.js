@@ -1,6 +1,6 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import history from 'utils/history';
+import history from 'app-init/history';
 import {
   addParty,
   selectParty,
@@ -22,7 +22,7 @@ import {
 const middlewares = [thunk];
 const store = configureMockStore(middlewares)();
 
-jest.mock('utils/history');
+jest.mock('app-init/history');
 
 describe('state/parties actions', () => {
   describe('addParty', () => {

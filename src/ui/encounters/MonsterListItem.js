@@ -3,7 +3,7 @@ import { DragSource } from 'react-dnd';
 import { ListGroupItem, UncontrolledPopover, PopoverBody } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export const MonsterListItem = ({
+const MonsterListItem = ({
   connectDragSource,
   color,
   id,

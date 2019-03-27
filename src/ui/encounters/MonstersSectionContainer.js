@@ -4,7 +4,7 @@ import {
   getPartyThresholds,
   getSelectedPartyName,
 } from 'state/parties/selectors';
-import Monsters from 'encounters/Monsters';
+import MonstersSection from 'ui/encounters/MonstersSection';
 
 const mapStateToProps = state => (
   {
@@ -16,4 +16,4 @@ const mapStateToProps = state => (
 export default connect(
   mapStateToProps,
   null,
-)(Monsters);
+)(MonstersSection);

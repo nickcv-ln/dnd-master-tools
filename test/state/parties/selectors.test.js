@@ -50,6 +50,24 @@ describe('state/parties selectors', () => {
     it('returns the entire party object', () => {
       expect(getSelectedParty(state)).toBe(state.parties.parties.myParty);
     });
+
+    it('returns null if no party is selected', () => {
+      expect(getSelectedParty({
+        parties: {
+          ...state.parties,
+          currentParty: null,
+        },
+      })).toBe(null);
+    });
+
+    it('returns null if the selected party does not exist', () => {
+      expect(getSelectedParty({
+        parties: {
+          ...state.parties,
+          currentParty: 'whatever',
+        },
+      })).toBe(null);
+    });
   });
 
   describe('isPartySelected', () => {

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import {
   ListGroup,
@@ -7,9 +7,8 @@ import {
   InputGroupAddon,
 } from 'reactstrap';
 
-// eslint-disable-next-line
-import MonsterListItem from 'encounters/MonsterListItem';
-import { getChallengeForThreshold } from 'utils/thresholds';
+import MonsterListItem from 'ui/encounters/MonsterListItem';
+import { getChallengeForThreshold, normalizeChallenge, getValueColor } from 'utils/thresholds';
 import monsterList from 'data/monsters';
 
 
@@ -29,12 +28,12 @@ class Monsters extends Component {
     this.filterMonsters = this.filterMonsters.bind(this);
   }
 
-  // eslint-disable-next-line
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.thresholds) {
+  componentDidUpdate(prevProps) {
+    const { thresholds } = this.props;
+    if (thresholds !== prevProps.thresholds) {
       this.setState({
-        minChallenge: getChallengeForThreshold(nextProps.thresholds.easy, false, true),
-        maxChallenge: getChallengeForThreshold(nextProps.thresholds.deadly, true),
+        minChallenge: getChallengeForThreshold(thresholds.easy, false, true),
+        maxChallenge: getChallengeForThreshold(thresholds.deadly, true),
       });
     }
   }
@@ -57,48 +56,22 @@ class Monsters extends Component {
     });
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  normalizeChallenge(challenge) {
-    switch (challenge) {
-      case '0':
-        return -1;
-      case '1/8':
-        return 0.125;
-      case '1/4':
-        return 0.25;
-      case '1/2':
-        return 0.5;
-      default:
-        return challenge;
-    }
-  }
-
   filterMonsters(monster) {
     const { maxChallenge, minChallenge, filter } = this.state;
     const { thresholds } = this.props;
-    const challenge = this.normalizeChallenge(monster.challenge);
+    const challenge = normalizeChallenge(monster.challenge);
 
     if (challenge > maxChallenge) {
-      return '';
+      return null;
     }
     if (challenge < minChallenge) {
-      return '';
+      return null;
     }
     if (filter.length && !monster.name.toLowerCase().includes(filter)) {
-      return '';
+      return null;
     }
 
-    let color = 'default';
-
-    if (monster.experience <= thresholds.easy) {
-      color = 'success';
-    } else if (monster.experience > thresholds.deadly) {
-      color = 'dark';
-    } else if (monster.experience >= thresholds.hard) {
-      color = 'danger';
-    } else if (monster.experience >= thresholds.medium) {
-      color = 'warning';
-    }
+    const color = getValueColor(monster.experience, thresholds);
 
     return (
       <MonsterListItem {...monster} color={color} key={monster.name} />
@@ -110,7 +83,7 @@ class Monsters extends Component {
     const items = monsterList.map(this.filterMonsters);
 
     const challenges = (
-      <React.Fragment>
+      <Fragment>
         <option value="-1">0</option>
         <option value="0.125">1/8</option>
         <option value="0.25">1/4</option>
@@ -140,7 +113,7 @@ class Monsters extends Component {
         <option value="23">23</option>
         <option value="24">24</option>
         <option value="30">30</option>
-      </React.Fragment>
+      </Fragment>
     );
 
     return (
