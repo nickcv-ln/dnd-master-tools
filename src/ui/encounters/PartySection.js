@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Col, Row, Jumbotron } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import AddParty from 'parties/AddFormContainer';
+import AddParty from 'ui/parties/AddFormContainer';
 
 const PartySection = ({
   isPartySelected,

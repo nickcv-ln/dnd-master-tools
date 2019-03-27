@@ -5,9 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Redirect } from 'react-router-dom';
 
 import Page from 'ui/common/Page';
-import MemberForm from 'parties/members/AddFormContainer';
+import MemberFormContainer from 'ui/parties/members/AddFormContainer';
 
-const View = ({
+const ViewPage = ({
   party,
   removeMember,
   increaseLevel,
@@ -61,18 +61,27 @@ const View = ({
           { trs }
         </tbody>
       </Table>
-      <MemberForm party={party.name} />
+      <MemberFormContainer party={party.name} />
     </Page>
   );
 };
 
-View.propTypes = {
+ViewPage.propTypes = {
   party: PropTypes.shape({
     name: PropTypes.string.isRequired,
-  }).isRequired,
+    members: PropTypes.shape({
+      name: PropTypes.string,
+      level: PropTypes.string,
+      ac: PropTypes.string,
+    }).isRequired,
+  }),
   removeMember: PropTypes.func.isRequired,
   increaseLevel: PropTypes.func.isRequired,
   decreaseLevel: PropTypes.func.isRequired,
 };
 
-export default View;
+ViewPage.defaultProps = {
+  party: null,
+};
+
+export default ViewPage;

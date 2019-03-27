@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { createParty } from 'state/parties/actions';
 import { createEncounter } from 'state/encounters/actions';
 import { createPartyEncounters } from 'state/saved-encounters/actions';
-import Form from 'parties/Form';
+import Form from 'ui/parties/Form';
 
 const mapDispatchToProps = dispatch => ({
   onSubmit: (data) => {
