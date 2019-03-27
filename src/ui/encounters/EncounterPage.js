@@ -13,7 +13,7 @@ import { DragDropContext } from 'react-dnd';
 import Page from 'ui/common/Page';
 import MonstersSectionContainer from 'ui/encounters/MonstersSectionContainer';
 import PartySectionContainer from 'ui/encounters/PartySectionContainer';
-import EncounterDetails from 'ui/encounters/EncounterDetailsContainer';
+import EncounterDetailsContainer from 'ui/encounters/EncounterDetailsContainer';
 import { getValueColor } from 'utils/thresholds';
 
 const EncounterPage = ({
@@ -22,8 +22,7 @@ const EncounterPage = ({
   save,
 }) => {
   const color = getValueColor(encounterValue, thresholds, 'light');
-
-  const displayedValue = encounterValue === 0 ? '' : encounterValue;
+  const displayedValue = encounterValue || '';
 
   return (
     <Page>
@@ -58,7 +57,7 @@ const EncounterPage = ({
           <Progress color={color} className="my-2" max={thresholds.deadly} value={encounterValue}>
             {displayedValue}
           </Progress>
-          <EncounterDetails />
+          <EncounterDetailsContainer />
           <Button disabled onClick={save} className="encounter-save">Save</Button>
         </Col>
       </Row>

@@ -59,6 +59,7 @@ class Monsters extends Component {
   render() {
     const { minChallenge, maxChallenge, filter } = this.state;
     const { thresholds } = this.props;
+
     const items = monsterList.map((monster) => {
       if (!monsterFilter(monster, minChallenge, maxChallenge, filter)) {
         return null;
