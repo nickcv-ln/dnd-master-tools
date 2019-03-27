@@ -13,7 +13,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
 
-import Page from 'common/Page';
+import Page from 'ui/common/Page';
 import AddParty from 'parties/AddFormContainer';
 import Monsters from 'encounters/MonstersContainer';
 import EncounterDetails from 'encounters/EncounterDetailsContainer';

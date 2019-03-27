@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Page from 'common/Page';
+import Page from 'ui/common/Page';
 import Form from 'parties/AddFormContainer';
 
 const Add = () => (

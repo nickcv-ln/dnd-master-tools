@@ -4,7 +4,7 @@ import { Table } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Redirect } from 'react-router-dom';
 
-import Page from 'common/Page';
+import Page from 'ui/common/Page';
 import MemberForm from 'parties/members/AddFormContainer';
 
 const View = ({

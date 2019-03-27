@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import { getPartyList, getSelectedParty } from 'state/parties/selectors';
 import { selectParty } from 'state/parties/actions';
-import Navbar from 'common/Navbar';
+import Navbar from 'ui/common/Navbar';
 
 const mapStateToProps = state => (
   {
