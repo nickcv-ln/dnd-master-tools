@@ -8,7 +8,8 @@ import {
 } from 'reactstrap';
 
 import MonsterListItem from 'ui/encounters/MonsterListItem';
-import { getChallengeForThreshold, normalizeChallenge, getValueColor } from 'utils/thresholds';
+import { getChallengeForThreshold, getValueColor } from 'utils/thresholds';
+import { filter as monsterFilter } from 'utils/monsters';
 import monsterList from 'data/monsters';
 
 
@@ -25,7 +26,6 @@ class Monsters extends Component {
     this.updateFilter = this.updateFilter.bind(this);
     this.updateMinChallenge = this.updateMinChallenge.bind(this);
     this.updateMaxChallenge = this.updateMaxChallenge.bind(this);
-    this.filterMonsters = this.filterMonsters.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -56,31 +56,22 @@ class Monsters extends Component {
     });
   }
 
-  filterMonsters(monster) {
-    const { maxChallenge, minChallenge, filter } = this.state;
-    const { thresholds } = this.props;
-    const challenge = normalizeChallenge(monster.challenge);
-
-    if (challenge > maxChallenge) {
-      return null;
-    }
-    if (challenge < minChallenge) {
-      return null;
-    }
-    if (filter.length && !monster.name.toLowerCase().includes(filter)) {
-      return null;
-    }
-
-    const color = getValueColor(monster.experience, thresholds);
-
-    return (
-      <MonsterListItem {...monster} color={color} key={monster.name} />
-    );
-  }
-
   render() {
-    const { minChallenge, maxChallenge } = this.state;
-    const items = monsterList.map(this.filterMonsters);
+    const { minChallenge, maxChallenge, filter } = this.state;
+    const { thresholds } = this.props;
+    const items = monsterList.map((monster) => {
+      if (!monsterFilter(monster, minChallenge, maxChallenge, filter)) {
+        return null;
+      }
+
+      return (
+        <MonsterListItem
+          {...monster}
+          color={getValueColor(monster.experience, thresholds)}
+          key={monster.name}
+        />
+      );
+    });
 
     const challenges = (
       <Fragment>
