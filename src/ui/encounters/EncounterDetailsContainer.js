@@ -8,7 +8,7 @@ import {
   increaseMonsterCount,
   decreaseMonsterCount,
 } from 'state/encounters/actions';
-import EncounterDetails from 'encounters/EncounterDetails';
+import EncounterDetails from 'ui/encounters/EncounterDetails';
 
 const mapStateToProps = state => (
   {

@@ -46,7 +46,10 @@ MonsterCard.propTypes = {
   monster: PropTypes.shape({
     name: PropTypes.string,
     number: PropTypes.number,
-    challenge: PropTypes.string,
+    challenge: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+    ]),
     color: PropTypes.string,
   }).isRequired,
   party: PropTypes.string.isRequired,

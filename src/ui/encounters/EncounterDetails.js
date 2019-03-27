@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { DropTarget } from 'react-dnd';
 
-import MonsterCard from 'encounters/MonsterCard';
-import { target, collect } from 'encounters/dropTarget';
+import MonsterCard from 'ui/encounters/MonsterCard';
+import { target, collect } from 'ui/encounters/dropTarget';
 
 class EncounterDetails extends Component {
   render() {

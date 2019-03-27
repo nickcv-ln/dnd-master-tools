@@ -9,7 +9,7 @@ import {
   Label,
 } from 'reactstrap';
 
-import Input from 'common/Input';
+import Input from 'ui/common/Input';
 
 const required = value => (value ? undefined : 'Required');
 

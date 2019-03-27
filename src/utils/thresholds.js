@@ -174,6 +174,22 @@ const addThresholdForLevel = (level) => {
   thresholds.deadly += referenceTable[level].deadly;
 };
 
+const getMultiplier = (numberOfMonsters) => {
+  if (numberOfMonsters === 1) {
+    return 1;
+  } else if (numberOfMonsters === 2) {
+    return 1.5;
+  } else if (numberOfMonsters <= 6) {
+    return 2;
+  } else if (numberOfMonsters <= 10) {
+    return 2.5;
+  } else if (numberOfMonsters <= 14) {
+    return 3;
+  }
+
+  return 4;
+};
+
 export const getPartyThresholds = (party) => {
   resetThresholds();
 
@@ -214,22 +230,6 @@ export const getChallengeForThreshold = (value, matchLower = false, matchHigher 
   return returnValue;
 };
 
-const getMultiplier = (numberOfMonsters) => {
-  if (numberOfMonsters === 1) {
-    return 1;
-  } else if (numberOfMonsters === 2) {
-    return 1.5;
-  } else if (numberOfMonsters <= 6) {
-    return 2;
-  } else if (numberOfMonsters <= 10) {
-    return 2.5;
-  } else if (numberOfMonsters <= 14) {
-    return 3;
-  }
-
-  return 4;
-};
-
 export const getEncounterValue = (monsters) => {
   let totalExperience = 0;
   let totalMonsters = 0;
@@ -239,4 +239,34 @@ export const getEncounterValue = (monsters) => {
   });
 
   return totalExperience * getMultiplier(totalMonsters);
+};
+
+export const normalizeChallenge = (challenge) => {
+  switch (challenge) {
+    case '0':
+    case 0:
+      return -1;
+    case '1/8':
+      return 0.125;
+    case '1/4':
+      return 0.25;
+    case '1/2':
+      return 0.5;
+    default:
+      return parseFloat(challenge);
+  }
+};
+
+export const getValueColor = (value, currentThresholds, defaultColor = 'default') => {
+  if (value <= currentThresholds.easy) {
+    return 'success';
+  } else if (value > currentThresholds.deadly) {
+    return 'dark';
+  } else if (value >= currentThresholds.hard) {
+    return 'danger';
+  } else if (value >= currentThresholds.medium) {
+    return 'warning';
+  }
+
+  return defaultColor;
 };

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import { getParty } from 'state/parties/selectors';
 import { removeMember, increaseLevel, decreaseLevel } from 'state/parties/actions';
-import View from 'parties/View';
+import ViewPage from 'ui/parties/ViewPage';
 
 const mapStateToProps = (state, { match: { params } }) => (
   {
@@ -28,4 +28,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(View);
+)(ViewPage);

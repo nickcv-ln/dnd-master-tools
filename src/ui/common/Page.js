@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Row, Col } from 'reactstrap';
 
-import Navbar from 'common/NavbarContainer';
+import Navbar from 'ui/common/NavbarContainer';
 
 const Page = ({ children }) => (
   <Container fluid>

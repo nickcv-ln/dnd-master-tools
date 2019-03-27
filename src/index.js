@@ -5,10 +5,10 @@ import { Router as BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 import store from 'state/store';
-import history from 'utils/history';
+import history from 'app-init/history';
 import Router from 'router';
 
-import 'utils/fontawesome';
+import 'app-init/fontawesome';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 

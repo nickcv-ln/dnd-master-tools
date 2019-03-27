@@ -2,6 +2,8 @@ import {
   getChallengeForThreshold,
   getPartyThresholds,
   getEncounterValue,
+  normalizeChallenge,
+  getValueColor,
 } from 'utils/thresholds';
 
 describe('tresholds', () => {
@@ -104,6 +106,56 @@ describe('tresholds', () => {
           number: 2,
         },
       })).toEqual(NaN);
+    });
+  });
+
+  describe('normalizeChallenge', () => {
+    it('returns the normalized challenge value used for comparison', () => {
+      expect(normalizeChallenge('0')).toBe(-1);
+      expect(normalizeChallenge(0)).toBe(-1);
+      expect(normalizeChallenge('1/8')).toBe(0.125);
+      expect(normalizeChallenge('1/4')).toBe(0.25);
+      expect(normalizeChallenge('1/2')).toBe(0.5);
+      expect(normalizeChallenge(1)).toBe(1);
+      expect(normalizeChallenge('1')).toBe(1);
+      expect(normalizeChallenge('13')).toBe(13);
+    });
+  });
+
+  describe('getValueColor', () => {
+    it('returns colors relative to the given thresholds', () => {
+      const thresholds = {
+        deadly: 50,
+        hard: 40,
+        medium: 30,
+        easy: 20,
+      };
+      expect(getValueColor(10, thresholds)).toBe('success');
+      expect(getValueColor(20, thresholds)).toBe('success');
+      expect(getValueColor(21, thresholds)).toBe('default');
+      expect(getValueColor(30, thresholds)).toBe('warning');
+      expect(getValueColor(31, thresholds)).toBe('warning');
+      expect(getValueColor(40, thresholds)).toBe('danger');
+      expect(getValueColor(41, thresholds)).toBe('danger');
+      expect(getValueColor(50, thresholds)).toBe('danger');
+      expect(getValueColor(51, thresholds)).toBe('dark');
+      expect(getValueColor(80, thresholds)).toBe('dark');
+    });
+
+    it('can return a custom default color', () => {
+      const thresholds = {
+        deadly: 50,
+        hard: 40,
+        medium: 30,
+        easy: 20,
+      };
+      expect(getValueColor(21, thresholds, 'light')).toBe('light');
+    });
+
+    it('returns the default if the threshold object is not well formatted', () => {
+      expect(getValueColor(21, { easy: 30 })).toBe('success');
+      expect(getValueColor(21, {})).toBe('default');
+      expect(getValueColor(33, { easy: 30 })).toBe('default');
     });
   });
 });

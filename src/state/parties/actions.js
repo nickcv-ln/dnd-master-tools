@@ -6,7 +6,7 @@ import {
   INCREASE_LEVEL,
   DECREASE_LEVEL,
 } from 'state/parties/types';
-import history from 'utils/history';
+import history from 'app-init/history';
 
 export const addParty = party => ({
   type: ADD_PARTY,
