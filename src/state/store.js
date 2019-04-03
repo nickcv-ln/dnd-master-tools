@@ -6,7 +6,7 @@ import rootReducer from 'state/rootReducer';
 
 const composeParams = [
   applyMiddleware(thunk),
-  persistState(['parties', 'encounters']),
+  persistState(['parties', 'encounters', 'savedEncounters']),
 ];
 
 /* eslint-disable */

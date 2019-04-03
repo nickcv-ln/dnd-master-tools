@@ -42,6 +42,14 @@ class PageNavBar extends React.Component {
         { parties[key].name }
       </DropdownItem>
     ));
+
+    const EncountersLink = selectedParty ?
+      (
+        <NavItem>
+          <NavLink tag={RoutedNavLink} to={`/encounters/${selectedParty.name}`}>Encounters List</NavLink>
+        </NavItem>
+      ) :
+      null;
     return (
       <div>
         <Navbar color="light" light expand="md">
@@ -51,11 +59,9 @@ class PageNavBar extends React.Component {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto" navbar>
+              { EncountersLink }
               <NavItem>
-                <NavLink tag={RoutedNavLink} to="/list">Encounters List</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink tag={RoutedNavLink} to="/">Encounters Creator</NavLink>
+                <NavLink tag={RoutedNavLink} exact to="/">Encounters Creator</NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
