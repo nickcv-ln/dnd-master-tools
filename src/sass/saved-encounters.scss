@@ -1,0 +1,28 @@
+.monster-list {
+  cursor: pointer;
+
+  .badge-default {
+    border: .05rem solid $color-grey;
+    border-style: inset;
+  }
+
+  &.list-group-item {
+    margin-bottom: 1rem;
+    border-radius: 1.5rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .header {
+    border-bottom: .06rem solid;
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+    margin: -.75rem -1.25rem 1rem;
+
+    &.bg-dark {
+      color: #fff;
+    }
+  }
+}

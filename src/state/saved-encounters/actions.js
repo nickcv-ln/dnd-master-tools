@@ -3,6 +3,7 @@ import {
   DELETE_PARTY_ENCOUNTERS,
   ADD_ENCOUNTER,
   REMOVE_ENCOUNTER,
+  SELECT_ENCOUNTER,
 } from 'state/saved-encounters/types';
 
 export const createPartyEncounters = party => ({
@@ -25,6 +26,14 @@ export const addEncounter = (party, encounter) => ({
 
 export const removeEncounter = (party, encounter) => ({
   type: REMOVE_ENCOUNTER,
+  payload: {
+    party,
+    encounter,
+  },
+});
+
+export const selectEncounter = (party, encounter) => ({
+  type: SELECT_ENCOUNTER,
   payload: {
     party,
     encounter,

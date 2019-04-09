@@ -19,6 +19,7 @@ import { getValueColor } from 'utils/thresholds';
 const EncounterPage = ({
   thresholds,
   encounterValue,
+  encounterExp,
   encounter,
   party,
   save,
@@ -60,7 +61,13 @@ const EncounterPage = ({
             {displayedValue}
           </Progress>
           <EncounterDetailsContainer />
-          <Button disabled={!party || !Object.keys(encounter).length} onClick={() => save(party, encounter)} className="encounter-save">Save</Button>
+          <Button
+            disabled={!party || !Object.keys(encounter).length}
+            onClick={() => save(party, { color, exp: encounterExp, mobs: encounter })}
+            className="encounter-save"
+          >
+            Save
+          </Button>
         </Col>
       </Row>
     </Page>
@@ -75,6 +82,7 @@ EncounterPage.propTypes = {
     deadly: PropTypes.number,
   }).isRequired,
   encounterValue: PropTypes.number.isRequired,
+  encounterExp: PropTypes.number.isRequired,
   encounter: PropTypes.shape({}).isRequired,
   party: PropTypes.string.isRequired,
   save: PropTypes.func.isRequired,

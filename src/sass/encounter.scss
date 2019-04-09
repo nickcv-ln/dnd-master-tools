@@ -1,0 +1,35 @@
+.droppable {
+  border-radius: .25rem .25rem 0 0;
+  border: 1px dashed;
+  height: calc(100vh - 265px - 40px);
+  overflow-y: auto;
+
+  .monster-card button {
+    background-color: transparent;
+    border-color: transparent;
+    color: $color-grey;
+
+    &:focus:active,&:focus {
+      box-shadow: none !important;
+    }
+  }
+}
+
+.encounter-save {
+  position: sticky;
+  width: 100%;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+
+.progress {
+  height: 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 1px solid $color-grey;
+
+  .bg-light {
+    color: $color-black;
+  }
+}

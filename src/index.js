@@ -13,7 +13,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 // import registerServiceWorker from 'registerServiceWorker';
-import 'index.css';
+import 'sass/index.scss';
 
 render(
   <div>

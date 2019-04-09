@@ -2,6 +2,7 @@ import {
   getEncounters,
   getCurrentPartyEncounter,
   getEncounterValue,
+  getEncounterExp,
 } from 'state/encounters/selectors';
 
 const state = {
@@ -36,6 +37,12 @@ describe('state/encounters selectors', () => {
   describe('getEncounterValue', () => {
     it('returns the value for the current encounter', () => {
       expect(getEncounterValue(state)).toBe(120);
+    });
+  });
+
+  describe('getEncounterExp', () => {
+    it('returns the exp total for the given encounter', () => {
+      expect(getEncounterExp(state)).toBe(80);
     });
   });
 });

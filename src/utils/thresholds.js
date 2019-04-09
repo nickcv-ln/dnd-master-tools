@@ -241,6 +241,15 @@ export const getEncounterValue = (monsters) => {
   return totalExperience * getMultiplier(totalMonsters);
 };
 
+export const getEncounterExp = (monsters) => {
+  let totalExperience = 0;
+  Object.keys(monsters).forEach((key) => {
+    totalExperience += monsters[key].experience * monsters[key].number;
+  });
+
+  return totalExperience;
+};
+
 export const normalizeChallenge = (challenge) => {
   switch (challenge) {
     case '0':

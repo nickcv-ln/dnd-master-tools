@@ -2,6 +2,7 @@ import {
   getChallengeForThreshold,
   getPartyThresholds,
   getEncounterValue,
+  getEncounterExp,
   normalizeChallenge,
   getValueColor,
 } from 'utils/thresholds';
@@ -102,6 +103,25 @@ describe('tresholds', () => {
 
     it('returns NaN if either value is missing', () => {
       expect(getEncounterValue({
+        Zombie: {
+          number: 2,
+        },
+      })).toEqual(NaN);
+    });
+  });
+
+  describe('getEncounterExp', () => {
+    it('returns the total exp for the given encounter', () => {
+      expect(getEncounterExp({
+        Zombie: {
+          experience: 200,
+          number: 2,
+        },
+      })).toBe(400);
+    });
+
+    it('returns NaN if either value is missing', () => {
+      expect(getEncounterExp({
         Zombie: {
           number: 2,
         },

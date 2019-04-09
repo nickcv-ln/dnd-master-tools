@@ -6,12 +6,17 @@ import {
   getPartyThresholds,
   getSelectedPartyName,
 } from 'state/parties/selectors';
-import { getEncounterValue, getCurrentPartyEncounter } from 'state/encounters/selectors';
+import {
+  getEncounterValue,
+  getCurrentPartyEncounter,
+  getEncounterExp,
+} from 'state/encounters/selectors';
 import EncounterPage from 'ui/encounters/EncounterPage';
 
 const mapStateToProps = state => ({
   thresholds: getPartyThresholds(state),
   encounterValue: getEncounterValue(state),
+  encounterExp: getEncounterExp(state),
   encounter: getCurrentPartyEncounter(state),
   party: getSelectedPartyName(state),
 });
