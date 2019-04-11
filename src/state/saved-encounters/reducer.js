@@ -55,7 +55,7 @@ const reducer = (state = defaultState, action = {}) => {
         ...omit(state, party),
       };
     default:
-      if (party) {
+      if (party && state[party]) {
         return {
           ...state,
           [party]: {
