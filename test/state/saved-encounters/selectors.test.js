@@ -3,12 +3,16 @@ import {
   getCurrentPartySavedEncounters,
   getcurrentPartySelectedEncounterId,
   getCurrentPartySelectedEncounter,
+  getcurrentPartyInitiatives,
 } from 'state/saved-encounters/selectors';
 
 const state = {
   savedEncounters: {
     myParty: {
       selectedEncounter: 0,
+      initiatives: {
+        member: 12,
+      },
       encounters: [
         {
           Zombie: {
@@ -96,6 +100,23 @@ describe('saved-encounters selectors', () => {
             ...state.savedEncounters.myParty,
             selectedEncounter: 12,
           },
+        },
+      })).toBe(null);
+    });
+  });
+
+  describe('getcurrentPartyInitiatives', () => {
+    it('returns the initiative', () => {
+      expect(getcurrentPartyInitiatives(state)).toBe(
+        state.savedEncounters.myParty.initiatives,
+      );
+    });
+
+    it('returns null if the party does not exist', () => {
+      expect(getcurrentPartyInitiatives({
+        ...state,
+        parties: {
+          currentParty: 'myParty2',
         },
       })).toBe(null);
     });

@@ -15,6 +15,18 @@ export const getcurrentPartySelectedEncounterId = createSelector(
   },
 );
 
+export const getcurrentPartyInitiatives = createSelector(
+  getSavedEncounters,
+  getSelectedPartyName,
+  (encounters, party) => {
+    if (!encounters[party]) {
+      return null;
+    }
+
+    return encounters[party].initiatives;
+  },
+);
+
 export const getCurrentPartySavedEncounters = createSelector(
   getSavedEncounters,
   getSelectedPartyName,

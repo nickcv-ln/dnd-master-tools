@@ -5,6 +5,7 @@ import {
   addEncounter,
   removeEncounter,
   selectEncounter,
+  setInitiative,
 } from 'state/saved-encounters/actions';
 
 const encounter = {
@@ -32,6 +33,7 @@ describe('state/saved-encounters reducer', () => {
       state = reducer(state, createPartyEncounters({ party: 'myParty' }));
       expect(state).toHaveProperty('myParty');
       expect(state).toHaveProperty('myParty.selectedEncounter', null);
+      expect(state).toHaveProperty('myParty.initiatives', {});
       expect(state).toHaveProperty('myParty.encounters', []);
     });
 
@@ -75,6 +77,31 @@ describe('state/saved-encounters reducer', () => {
           expect(state.myParty.encounters).toHaveLength(2);
           expect(state).toHaveProperty('myParty.selectedEncounter', null);
         });
+      });
+    });
+
+    describe('after the setInitiative action', () => {
+      it('adds the given initiatives', () => {
+        state = reducer(state, setInitiative('myParty', {
+          mob: 12,
+          partyMember: 22,
+        }));
+
+        expect(state).toHaveProperty('myParty.initiatives');
+        expect(state).toHaveProperty('myParty.initiatives.mob', 12);
+        expect(state).toHaveProperty('myParty.initiatives.partyMember', 22);
+      });
+
+      it('overrides existing initiatives', () => {
+        state = reducer(state, setInitiative('myParty', {
+          mob: 13,
+          partyMember2: 1,
+        }));
+
+        expect(state).toHaveProperty('myParty.initiatives');
+        expect(state).toHaveProperty('myParty.initiatives.mob', 13);
+        expect(state).toHaveProperty('myParty.initiatives.partyMember', 22);
+        expect(state).toHaveProperty('myParty.initiatives.partyMember2', 1);
       });
     });
 

@@ -4,6 +4,7 @@ import {
   addEncounter,
   removeEncounter,
   selectEncounter,
+  setInitiative,
 } from 'state/saved-encounters/actions';
 import {
   ADD_ENCOUNTER,
@@ -11,6 +12,7 @@ import {
   CREATE_PARTY_ENCOUNTERS,
   DELETE_PARTY_ENCOUNTERS,
   SELECT_ENCOUNTER,
+  SET_INITIATIVE,
 } from 'state/saved-encounters/types';
 
 describe('state/saved-encounters actions', () => {
@@ -69,6 +71,20 @@ describe('state/saved-encounters actions', () => {
       expect(action).toHaveProperty('payload', expect.any(Object));
       expect(action).toHaveProperty('payload.party', 'myParty');
       expect(action).toHaveProperty('payload.encounter', 1);
+    });
+  });
+
+  describe('setInitiative', () => {
+    it('returns the proper action', () => {
+      const initiatives = {
+        monster: 12,
+        partyMember: 23,
+      };
+      const action = setInitiative('myParty', initiatives);
+      expect(action).toHaveProperty('type', SET_INITIATIVE);
+      expect(action).toHaveProperty('payload', expect.any(Object));
+      expect(action).toHaveProperty('payload.party', 'myParty');
+      expect(action).toHaveProperty('payload.initiatives', initiatives);
     });
   });
 });

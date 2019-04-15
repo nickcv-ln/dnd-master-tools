@@ -5,6 +5,7 @@ import {
   ADD_ENCOUNTER,
   REMOVE_ENCOUNTER,
   SELECT_ENCOUNTER,
+  SET_INITIATIVE,
 } from 'state/saved-encounters/types';
 
 const defaultState = {};
@@ -21,6 +22,18 @@ const encountersReducer = (state, action) => {
       newPartyEncounters.splice(action.payload.encounter, 1);
       return newPartyEncounters;
     }
+    default:
+      return state;
+  }
+};
+
+const initiativesReducer = (state, action) => {
+  switch (action.type) {
+    case SET_INITIATIVE:
+      return {
+        ...state,
+        ...action.payload.initiatives,
+      };
     default:
       return state;
   }
@@ -47,6 +60,7 @@ const reducer = (state = defaultState, action = {}) => {
         ...state,
         [party]: {
           selectedEncounter: null,
+          initiatives: {},
           encounters: [],
         },
       };
@@ -60,6 +74,7 @@ const reducer = (state = defaultState, action = {}) => {
           ...state,
           [party]: {
             selectedEncounter: selectedEncounterReducer(state[party].selectedEncounter, action),
+            initiatives: initiativesReducer(state[party].initiatives, action),
             encounters: encountersReducer(state[party].encounters, action),
           },
         };

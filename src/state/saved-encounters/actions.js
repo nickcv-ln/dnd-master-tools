@@ -4,6 +4,7 @@ import {
   ADD_ENCOUNTER,
   REMOVE_ENCOUNTER,
   SELECT_ENCOUNTER,
+  SET_INITIATIVE,
 } from 'state/saved-encounters/types';
 
 export const createPartyEncounters = party => ({
@@ -37,5 +38,13 @@ export const selectEncounter = (party, encounter) => ({
   payload: {
     party,
     encounter,
+  },
+});
+
+export const setInitiative = (party, initiatives) => ({
+  type: SET_INITIATIVE,
+  payload: {
+    party,
+    initiatives,
   },
 });
