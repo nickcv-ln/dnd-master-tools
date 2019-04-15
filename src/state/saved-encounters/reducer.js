@@ -6,6 +6,7 @@ import {
   REMOVE_ENCOUNTER,
   SELECT_ENCOUNTER,
   SET_INITIATIVE,
+  CLEAR_INITIATIVE,
 } from 'state/saved-encounters/types';
 
 const defaultState = {};
@@ -34,6 +35,8 @@ const initiativesReducer = (state, action) => {
         ...state,
         ...action.payload.initiatives,
       };
+    case CLEAR_INITIATIVE:
+      return {};
     default:
       return state;
   }

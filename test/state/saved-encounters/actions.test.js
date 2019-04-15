@@ -5,6 +5,7 @@ import {
   removeEncounter,
   selectEncounter,
   setInitiative,
+  clearInitiative,
 } from 'state/saved-encounters/actions';
 import {
   ADD_ENCOUNTER,
@@ -13,6 +14,7 @@ import {
   DELETE_PARTY_ENCOUNTERS,
   SELECT_ENCOUNTER,
   SET_INITIATIVE,
+  CLEAR_INITIATIVE,
 } from 'state/saved-encounters/types';
 
 describe('state/saved-encounters actions', () => {
@@ -85,6 +87,15 @@ describe('state/saved-encounters actions', () => {
       expect(action).toHaveProperty('payload', expect.any(Object));
       expect(action).toHaveProperty('payload.party', 'myParty');
       expect(action).toHaveProperty('payload.initiatives', initiatives);
+    });
+  });
+
+  describe('clearInitiative', () => {
+    it('returns the proper action', () => {
+      const action = clearInitiative('myParty');
+      expect(action).toHaveProperty('type', CLEAR_INITIATIVE);
+      expect(action).toHaveProperty('payload', expect.any(Object));
+      expect(action).toHaveProperty('payload.party', 'myParty');
     });
   });
 });

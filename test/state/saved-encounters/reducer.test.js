@@ -6,6 +6,7 @@ import {
   removeEncounter,
   selectEncounter,
   setInitiative,
+  clearInitiative,
 } from 'state/saved-encounters/actions';
 
 const encounter = {
@@ -102,6 +103,14 @@ describe('state/saved-encounters reducer', () => {
         expect(state).toHaveProperty('myParty.initiatives.mob', 13);
         expect(state).toHaveProperty('myParty.initiatives.partyMember', 22);
         expect(state).toHaveProperty('myParty.initiatives.partyMember2', 1);
+      });
+
+      describe('after the clearInitiative action', () => {
+        it('resets the initiative state', () => {
+          state = reducer(state, clearInitiative('myParty'));
+
+          expect(state).toHaveProperty('myParty.initiatives', {});
+        });
       });
     });
 
