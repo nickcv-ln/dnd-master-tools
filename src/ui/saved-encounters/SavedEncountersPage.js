@@ -3,12 +3,13 @@ import { Row, Col } from 'reactstrap';
 
 import Page from 'ui/common/Page';
 import SavedEncountersListContainer from 'ui/saved-encounters/SavedEncountersListContainer';
+import EncounterDetailsContainer from 'ui/saved-encounters/EncounterDetailsContainer';
 
 const SavedEncountersPage = () => (
   <Page>
     <Row>
       <Col sm={10}>
-        encounter details
+        <EncounterDetailsContainer />
       </Col>
       <Col sm={2}>
         <SavedEncountersListContainer />
