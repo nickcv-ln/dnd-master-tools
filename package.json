@@ -29,6 +29,7 @@
     "redux-localstorage": "^0.4.1",
     "redux-thunk": "^2.3.0",
     "reselect": "^3.0.1",
+    "roll": "^1.2.0",
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
