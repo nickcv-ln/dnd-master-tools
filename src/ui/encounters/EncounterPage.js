@@ -9,6 +9,7 @@ import {
 } from 'reactstrap';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
+import { Redirect } from 'react-router-dom';
 
 import Page from 'ui/common/Page';
 import MonstersSectionContainer from 'ui/encounters/MonstersSectionContainer';
@@ -26,6 +27,10 @@ const EncounterPage = ({
 }) => {
   const color = getValueColor(encounterValue, thresholds, 'light');
   const displayedValue = encounterValue || '';
+
+  if (!party) {
+    return <Redirect to="/parties/add" />;
+  }
 
   return (
     <Page>
@@ -84,8 +89,12 @@ EncounterPage.propTypes = {
   encounterValue: PropTypes.number.isRequired,
   encounterExp: PropTypes.number.isRequired,
   encounter: PropTypes.shape({}).isRequired,
-  party: PropTypes.string.isRequired,
   save: PropTypes.func.isRequired,
+  party: PropTypes.string,
+};
+
+EncounterPage.defaultProps = {
+  party: null,
 };
 
 export default DragDropContext(HTML5Backend)(EncounterPage);

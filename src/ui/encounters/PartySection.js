@@ -4,22 +4,10 @@ import { Link } from 'react-router-dom';
 import { Col, Row, Jumbotron } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import AddParty from 'ui/parties/AddFormContainer';
-
 const PartySection = ({
   isPartySelected,
-  doPartiesExist,
   selectedParty,
 }) => {
-  if (!doPartiesExist) {
-    return (
-      <div>
-        <p>no party found: create one!</p>
-        <AddParty />
-      </div>
-    );
-  }
-
   if (!isPartySelected) {
     return (
       <p>select one party</p>
@@ -52,7 +40,6 @@ const PartySection = ({
 
 PartySection.propTypes = {
   isPartySelected: PropTypes.bool.isRequired,
-  doPartiesExist: PropTypes.bool.isRequired,
   selectedParty: PropTypes.shape({
     name: PropTypes.string,
   }),

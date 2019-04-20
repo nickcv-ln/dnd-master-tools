@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Redirect } from 'react-router-dom';
 import {
   ListGroup,
   ListGroupItem,
@@ -8,10 +7,6 @@ import {
 } from 'reactstrap';
 
 const SavedEncountersList = ({ encounters, party, select }) => {
-  if (encounters === null || party === null) {
-    return <Redirect to="/" />;
-  }
-
   const list = encounters.map((encounter, id) => {
     const mobs = Object.keys(encounter.mobs).map((monster) => {
       const mobData = encounter.mobs[monster];
