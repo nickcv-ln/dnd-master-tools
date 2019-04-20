@@ -42,11 +42,12 @@ export const selectEncounter = (party, encounter) => ({
   },
 });
 
-export const setInitiative = (party, initiatives) => ({
+export const setInitiative = (party, initiatives, isPartyMember = false) => ({
   type: SET_INITIATIVE,
   payload: {
     party,
     initiatives,
+    isPartyMember,
   },
 });
 

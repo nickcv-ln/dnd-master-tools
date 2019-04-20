@@ -33,7 +33,16 @@ const initiativesReducer = (state, action) => {
     case SET_INITIATIVE:
       return {
         ...state,
-        ...action.payload.initiatives,
+        ...Object.keys(action.payload.initiatives).reduce(
+          (total, creature) => ({
+            ...total,
+            [creature]: {
+              value: action.payload.initiatives[creature],
+              isPartyMember: action.payload.isPartyMember,
+            },
+          }),
+          {},
+        ),
       };
     case CLEAR_INITIATIVE:
       return {};

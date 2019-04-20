@@ -87,6 +87,16 @@ describe('state/saved-encounters actions', () => {
       expect(action).toHaveProperty('payload', expect.any(Object));
       expect(action).toHaveProperty('payload.party', 'myParty');
       expect(action).toHaveProperty('payload.initiatives', initiatives);
+      expect(action).toHaveProperty('payload.isPartyMember', false);
+    });
+
+    it('is possible to set the party member flag to true', () => {
+      const action = setInitiative('myParty', {}, true);
+      expect(action).toHaveProperty('type', SET_INITIATIVE);
+      expect(action).toHaveProperty('payload', expect.any(Object));
+      expect(action).toHaveProperty('payload.party', 'myParty');
+      expect(action).toHaveProperty('payload.initiatives', {});
+      expect(action).toHaveProperty('payload.isPartyMember', true);
     });
   });
 

@@ -85,24 +85,34 @@ describe('state/saved-encounters reducer', () => {
       it('adds the given initiatives', () => {
         state = reducer(state, setInitiative('myParty', {
           mob: 12,
-          partyMember: 22,
+          mob2: 22,
         }));
 
         expect(state).toHaveProperty('myParty.initiatives');
-        expect(state).toHaveProperty('myParty.initiatives.mob', 12);
-        expect(state).toHaveProperty('myParty.initiatives.partyMember', 22);
+        expect(state).toHaveProperty('myParty.initiatives.mob', expect.any(Object));
+        expect(state).toHaveProperty('myParty.initiatives.mob.value', 12);
+        expect(state).toHaveProperty('myParty.initiatives.mob.isPartyMember', false);
+        expect(state).toHaveProperty('myParty.initiatives.mob2', expect.any(Object));
+        expect(state).toHaveProperty('myParty.initiatives.mob2.value', 22);
+        expect(state).toHaveProperty('myParty.initiatives.mob2.isPartyMember', false);
       });
 
       it('overrides existing initiatives', () => {
         state = reducer(state, setInitiative('myParty', {
           mob: 13,
-          partyMember2: 1,
-        }));
+          partyMember: 1,
+        }, true));
 
         expect(state).toHaveProperty('myParty.initiatives');
-        expect(state).toHaveProperty('myParty.initiatives.mob', 13);
-        expect(state).toHaveProperty('myParty.initiatives.partyMember', 22);
-        expect(state).toHaveProperty('myParty.initiatives.partyMember2', 1);
+        expect(state).toHaveProperty('myParty.initiatives.mob', expect.any(Object));
+        expect(state).toHaveProperty('myParty.initiatives.mob.value', 13);
+        expect(state).toHaveProperty('myParty.initiatives.mob.isPartyMember', true);
+        expect(state).toHaveProperty('myParty.initiatives.mob2', expect.any(Object));
+        expect(state).toHaveProperty('myParty.initiatives.mob2.value', 22);
+        expect(state).toHaveProperty('myParty.initiatives.mob2.isPartyMember', false);
+        expect(state).toHaveProperty('myParty.initiatives.partyMember', expect.any(Object));
+        expect(state).toHaveProperty('myParty.initiatives.partyMember.value', 1);
+        expect(state).toHaveProperty('myParty.initiatives.partyMember.isPartyMember', true);
       });
 
       describe('after the clearInitiative action', () => {
