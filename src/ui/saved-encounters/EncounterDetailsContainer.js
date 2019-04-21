@@ -3,19 +3,20 @@ import { connect } from 'react-redux';
 import {
   getCurrentPartySelectedEncounter,
 } from 'state/saved-encounters/selectors';
-import { getSelectedPartyName } from 'state/parties/selectors';
+import { getSelectedParty } from 'state/parties/selectors';
 import { setInitiative, clearInitiative } from 'state/saved-encounters/actions';
 import EncounterDetails from 'ui/saved-encounters/EncounterDetails';
 
 const mapStateToProps = state => ({
   encounter: getCurrentPartySelectedEncounter(state),
-  party: getSelectedPartyName(state),
+  party: getSelectedParty(state),
 });
 
 const mapDispatchToProps = dispatch => ({
-  setInitiative: (party, initiatives) => {
+  setInitiative: (party, mobs, members) => {
     dispatch(clearInitiative(party));
-    dispatch(setInitiative(party, initiatives));
+    dispatch(setInitiative(party, mobs));
+    dispatch(setInitiative(party, members, true));
   },
 });
 
